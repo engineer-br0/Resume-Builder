@@ -1,13 +1,67 @@
 import React, { useState } from "react";
 import styles from './Editor.module.css'
-//djskdjksdjksj
+import InputControl from "./InputControl";
+
 const Editor = (props) =>{
    const sections = props.sections;
    const [activeSectionKey, setActiveSectionKey] = useState(Object.keys(sections)[0]); 
 
+   const [values, setValues] = useState({
+    name : sections[activeSectionKey]?.detail?.name || "",
+    id : 44
+   })
+   
+   const basicInfoBody = () =>{
+    return(
+      <>
+      <div className={styles.detail}>
+        <div className={styles.row}>
+          <InputControl 
+          label="Name"
+          value = {values.name}
+          placeholder = "Enter your name"
+          onChange = {(event) => {
+            setValues((prev)=>(
+              {...prev, name: event.target.value}
+            ))
+          }}
+          />
+          <InputControl 
+          label="Title"
+          />
+        </div>
+        <div className={styles.row}>
+          <InputControl 
+          label="LinkedIn Profile Link"
+          />
+          <InputControl 
+          label="Github profile link"
+          />
+        </div>
+        <div className={styles.row}>
+          <InputControl 
+          label="Email"
+          />
+          <InputControl 
+          label="Phone"
+          />
+        </div>
+      </div>
+      </>
+    )
+   }
+
+   const generateBody = () => {
+     switch (activeSectionKey){
+     case "basicInfo" :
+     return basicInfoBody();
+     }
+   }
+
   return(
      <>
      <div className={styles.container}>
+
       <div className={styles.header}>
        {Object.keys(sections)?.map((key)=>(
         <div 
@@ -17,6 +71,10 @@ const Editor = (props) =>{
           {sections[key].sectionTitle}
         </div>
        ))}
+       </div>
+
+       <div className={styles.body} >
+        {generateBody()}
        </div>
      </div>
      </>
