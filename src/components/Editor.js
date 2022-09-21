@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import styles from './Editor.module.css'
+//djskdjksdjksj
+const Editor = (props) =>{
+   const sections = props.sections;
+   const [activeSectionKey, setActiveSectionKey] = useState(Object.keys(sections)[0]); 
 
-
-const Editor = () =>{
-
+  return(
+     <>
+     <div className={styles.container}>
+      <div className={styles.header}>
+       {Object.keys(sections)?.map((key)=>(
+        <div 
+         className={`${styles.section} ${(key === activeSectionKey ? styles.active : "") }`}
+         onClick = {() => {setActiveSectionKey(key)}}
+        >
+          {sections[key].sectionTitle}
+        </div>
+       ))}
+       </div>
+     </div>
+     </>
+  );
 }
 
 export default Editor;

@@ -1,5 +1,6 @@
 import React from "react";
-import { useRef } from "react";
+import { useState } from "react";
+// import { useRef } from "react";
 import './Body.css'
 import ReactToPrint from "react-to-print";
 import { ArrowDown } from "react-feather";
@@ -9,6 +10,41 @@ const Body = () =>{
   
   const colors = ["#239ce2", "#48bb78", "#0bc5ea", "#a0aec0", "#ed8936"];
   // const resumeRef = useRef();
+
+  const [sections,setSections] = useState({
+    basicInfo : {
+      id : "Basic Info",
+      sectionTitle : "Basic Info"
+    },
+    workExp : {
+      id : "Work Experiance",
+      sectionTitle : "Work Experiance"
+    },
+    projects : {
+      id : "Projects",
+      sectionTitle : "Projects"
+    },
+    education : {
+      id : "Education",
+      sectionTitle : "Education"
+    },
+    skills : {
+      id : "Skills",
+      sectionTitle : "Skills"
+    },
+    achievement : {
+      id : "Achievement",
+      sectionTitle : "Achievement"
+    },
+    summary : {
+      id : "Summary",
+      sectionTitle : "Summary"
+    },
+    others : {
+      id : "Others",
+      sectionTitle : "Others"
+    }
+  });
 
   return(
     <>
@@ -38,8 +74,11 @@ const Body = () =>{
         />
 
       </div>
-
-      <Editor />
+      <div className="main">
+      <Editor 
+      sections = {sections}
+      />
+      </div>
     </div>
     </>
   );
