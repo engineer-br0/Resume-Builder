@@ -111,7 +111,7 @@ const Editor = (props) =>{
              label="Section Title"
              value = {sectionTitle || ""}
              onChange = {(event) =>{
-              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+              setSectionTitle(event.target.value);
              }}
           />
           </div>
@@ -202,7 +202,7 @@ const Editor = (props) =>{
              label="Section Title"
              value = {sectionTitle || ""}
              onChange = {(event) =>{
-              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+              setSectionTitle(event.target.value);
              }}
           />
           </div>
@@ -275,7 +275,7 @@ const Editor = (props) =>{
              label="Section Title"
              value = {sectionTitle || ""}
              onChange = {(event) =>{
-              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+              setSectionTitle(event.target.value);
              }}
           />
           </div>
@@ -327,7 +327,7 @@ const Editor = (props) =>{
              label="Section Title"
              value = {sectionTitle || ""}
              onChange = {(event) =>{
-              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+              setSectionTitle(event.target.value);
              }}
           />
           </div>
@@ -364,7 +364,7 @@ const Editor = (props) =>{
              label="Section Title"
              value = {sectionTitle || ""}
              onChange = {(event) =>{
-              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+              setSectionTitle(event.target.value);
              }}
           />
           </div>
@@ -386,7 +386,7 @@ const Editor = (props) =>{
              label="Section Title"
              value = {sectionTitle || ""}
              onChange = {(event) =>{
-              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+              setSectionTitle(event.target.value);
              }}
           />
           </div>
