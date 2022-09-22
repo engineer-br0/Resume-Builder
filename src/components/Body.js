@@ -76,7 +76,7 @@ const Body = () =>{
       </div>
       <div className="main">
       <Editor 
-      sections = {sections}
+                sections={sections}
       />
       </div>
     </div>

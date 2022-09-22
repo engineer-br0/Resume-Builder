@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './Editor.module.css'
 import InputControl from "./InputControl";
 
 const Editor = (props) =>{
    const sections = props.sections;
    const [activeSectionKey, setActiveSectionKey] = useState(Object.keys(sections)[0]); 
-
+   const [sectionTitle, setSectionTitle] = useState(sections[activeSectionKey].sectionTitle);
    const [values, setValues] = useState({
     // name : sections[activeSectionKey]?.detail?.name || "",
     // title : sections[activeSectionKey]?.detail?.title || "",
@@ -15,6 +15,11 @@ const Editor = (props) =>{
     // phone : sections[activeSectionKey]?.detail?.phone || "",
     points : []
    })
+
+   useEffect(() =>{
+     setSectionTitle(sections[activeSectionKey].sectionTitle);
+
+   },[activeSectionKey])
 
    const handlePointUpdate = (data, key) => {
      //if(!Array.isArray(values.points)) values.points = [];
@@ -102,6 +107,15 @@ const Editor = (props) =>{
    const workExpBody = (
         <div className={styles.detail}>
           <div className={styles.row}>
+          <InputControl
+             label="Section Title"
+             value = {sectionTitle || ""}
+             onChange = {(event) =>{
+              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+             }}
+          />
+          </div>
+          <div className={styles.row}>
             <InputControl
               label="Title"
               placeholder="Enter title eg. Frontend developer"
@@ -184,6 +198,15 @@ const Editor = (props) =>{
    const projectsBody = (
     <div className={styles.detail}>
       <div className={styles.row}>
+          <InputControl
+             label="Section Title"
+             value = {sectionTitle || ""}
+             onChange = {(event) =>{
+              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+             }}
+          />
+          </div>
+      <div className={styles.row}>
         <InputControl
           label="Title"
           value={values.title}
@@ -247,6 +270,15 @@ const Editor = (props) =>{
 
   const educationBody = (
         <div className={styles.detail}>
+          <div className={styles.row}>
+          <InputControl
+             label="Section Title"
+             value = {sectionTitle || ""}
+             onChange = {(event) =>{
+              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+             }}
+          />
+          </div>
            <div className={styles.row}>
              <InputControl
                label="Title"
@@ -290,6 +322,15 @@ const Editor = (props) =>{
 
     const achievementsBody = (
     <div className={styles.detail}>
+      <div className={styles.row}>
+          <InputControl
+             label="Section Title"
+             value = {sectionTitle || ""}
+             onChange = {(event) =>{
+              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+             }}
+          />
+          </div>
       <div className={styles.column}>
         <label>List your achievements</label>
         <InputControl
@@ -318,6 +359,15 @@ const Editor = (props) =>{
 
     const summaryBody = (
     <div className={styles.detail}>
+      <div className={styles.row}>
+          <InputControl
+             label="Section Title"
+             value = {sectionTitle || ""}
+             onChange = {(event) =>{
+              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+             }}
+          />
+          </div>
       <InputControl
         label="Summary"
         value={values.summary}
@@ -331,6 +381,15 @@ const Editor = (props) =>{
 
   const othersBody = (
     <div className={styles.detail}>
+      <div className={styles.row}>
+          <InputControl
+             label="Section Title"
+             value = {sectionTitle || ""}
+             onChange = {(event) =>{
+              setValues((prev) =>({...prev, sectionTitle: event.target.value}))
+             }}
+          />
+          </div>
       <InputControl
         label="Other"
         value={values.other}
@@ -363,8 +422,6 @@ const Editor = (props) =>{
      }
    }
 
-
-
   return(
      <>
      <div className={styles.container}>
@@ -381,8 +438,11 @@ const Editor = (props) =>{
        </div>
 
        <div className={styles.body} >
+        
         {generateBody()}
        </div>
+
+
      </div>
      </>
   );
