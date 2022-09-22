@@ -13,7 +13,15 @@ const Editor = (props) =>{
     // github : sections[activeSectionKey]?.detail?.github || "",
     // email : sections[activeSectionKey]?.detail?.email || "",
     // phone : sections[activeSectionKey]?.detail?.phone || "",
+    points : []
    })
+
+   const handlePointUpdate = (data, key) => {
+     //if(!Array.isArray(values.points)) values.points = [];
+     let tempValues = {...values};
+     tempValues.points[key] = data;
+     setValues(tempValues);
+   }
    
    const basicInfoBody = () =>{
     return(
@@ -152,24 +160,24 @@ const Editor = (props) =>{
               }
             />
           </div>
-          {/* <div className={styles.column}>
+          <div className={styles.column}>
             <label>Enter work description</label>
             <InputControl
               placeholder="Line 1"
               value={values.points ? values.points[0] : ""}
-              onChange={(event) => handlePointUpdate(event.target.value, 0)}
+               onChange={(event) => handlePointUpdate(event.target.value, 0)}
             />
             <InputControl
               placeholder="Line 2"
               value={values.points ? values.points[1] : ""}
-              onChange={(event) => handlePointUpdate(event.target.value, 1)}
+               onChange={(event) => handlePointUpdate(event.target.value, 1)}
             />
             <InputControl
               placeholder="Line 3"
               value={values.points ? values.points[2] : ""}
-              onChange={(event) => handlePointUpdate(event.target.value, 2)}
+               onChange={(event) => handlePointUpdate(event.target.value, 2)}
             />
-          </div> */}
+          </div>
         </div>
       );
 
@@ -211,7 +219,7 @@ const Editor = (props) =>{
           }
         />
       </div>
-      {/* <div className={styles.column}>
+      <div className={styles.column}>
         <label>Enter project description</label>
         <InputControl
           placeholder="Line 1"
@@ -233,7 +241,7 @@ const Editor = (props) =>{
           value={values.points ? values.points[3] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 3)}
         />
-      </div> */}
+      </div>
     </div>
   );
 
@@ -282,7 +290,7 @@ const Editor = (props) =>{
 
     const achievementsBody = (
     <div className={styles.detail}>
-      {/* <div className={styles.column}>
+      <div className={styles.column}>
         <label>List your achievements</label>
         <InputControl
           placeholder="Line 1"
@@ -304,7 +312,7 @@ const Editor = (props) =>{
           value={values.points ? values.points[3] : ""}
           onChange={(event) => handlePointUpdate(event.target.value, 3)}
         />
-      </div> */}
+      </div>
     </div>
   );
 
