@@ -14,35 +14,43 @@ const Body = () =>{
   const [sections,setSections] = useState({
     basicInfo : {
       id : "Basic Info",
-      sectionTitle : "Basic Info"
+      sectionTitle : "Basic Info",
+      detail : {}
     },
     workExp : {
       id : "Work Experiance",
-      sectionTitle : "Work Experiance"
+      sectionTitle : "Work Experiance",
+      details : []
     },
     projects : {
       id : "Projects",
-      sectionTitle : "Projects"
+      sectionTitle : "Projects",
+      details : []
     },
     education : {
       id : "Education",
-      sectionTitle : "Education"
+      sectionTitle : "Education",
+      details : []
     },
-    skills : {
-      id : "Skills",
-      sectionTitle : "Skills"
-    },
+    // skills : {
+    //   id : "Skills",
+    //   sectionTitle : "Skills",
+    //   detail : []
+    // },
     achievement : {
       id : "Achievement",
-      sectionTitle : "Achievement"
+      sectionTitle : "Achievement",
+      details : []
     },
     summary : {
       id : "Summary",
-      sectionTitle : "Summary"
+      sectionTitle : "Summary",
+      detail : {}
     },
     others : {
       id : "Others",
-      sectionTitle : "Others"
+      sectionTitle : "Others",
+      detail : {}
     }
   });
 
@@ -77,6 +85,7 @@ const Body = () =>{
       <div className="main">
       <Editor 
                 sections={sections}
+                setSections = {setSections}
       />
       </div>
     </div>

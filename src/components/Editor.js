@@ -5,6 +5,7 @@ import InputControl from "./InputControl";
 const Editor = (props) =>{
    const sections = props.sections;
    const [activeSectionKey, setActiveSectionKey] = useState(Object.keys(sections)[0]); 
+   const [activeIndex, setActiveIndex] = useState(0);
    const [sectionTitle, setSectionTitle] = useState(sections[activeSectionKey].sectionTitle);
    const [values, setValues] = useState({
     // name : sections[activeSectionKey]?.detail?.name || "",
@@ -422,6 +423,177 @@ const Editor = (props) =>{
      }
    }
 
+   const handleSubmission = () =>{
+    switch (sections[activeSectionKey]) {
+      case sections.basicInfo: {
+        const tempDetail = {
+          name: values.name,
+          title: values.title,
+          linkedin: values.linkedin,
+          github: values.github,
+          email: values.email,
+          phone: values.phone,
+        };
+
+        props.setSections((prev) => ({
+          ...prev,
+          basicInfo: {
+            ...prev[sections.basicInfo],
+            detail: tempDetail,
+            sectionTitle,
+          },
+        }));
+          console.log(sections.basicInfo);
+          break;
+        }
+
+      case sections.workExp: {
+        const tempDetail = {
+          certificationLink: values.certificationLink,
+          title: values.title,
+          startDate: values.startDate,
+          endDate: values.endDate,
+          companyName: values.companyName,
+          location: values.location,
+          points: values.points,
+        };
+        const tempDetails = [...sections.workExp.details];
+        tempDetails[activeIndex] = tempDetail;
+
+        props.setSections((prev) => ({
+          ...prev,
+          workExp: {
+            ...prev[sections.workExp],
+            details: tempDetails,
+            sectionTitle,
+          },
+        }));
+        console.log(sections.workExp);
+        break;
+        }
+
+        case sections.projects: {
+          const tempDetail = {
+            certificationLink: values.certificationLink,
+            title: values.title,
+            startDate: values.startDate,
+            endDate: values.endDate,
+            companyName: values.companyName,
+            location: values.location,
+            points: values.points,
+          };
+          const tempDetails = [...sections.projects.details];
+          tempDetails[activeIndex] = tempDetail;
+  
+          props.setSections((prev) => ({
+            ...prev,
+            projects: {
+              ...prev[sections.projects],
+              details: tempDetails,
+              sectionTitle,
+            },
+          }));
+          console.log(sections.projects);
+          break;
+          }
+
+          case sections.education: {
+            const tempDetail = {
+              certificationLink: values.certificationLink,
+              title: values.title,
+              startDate: values.startDate,
+              endDate: values.endDate,
+              companyName: values.companyName,
+              location: values.location,
+              points: values.points,
+            };
+            const tempDetails = [...sections.education.details];
+            tempDetails[activeIndex] = tempDetail;
+    
+            props.setSections((prev) => ({
+              ...prev,
+              education: {
+                ...prev[sections.education],
+                details: tempDetails,
+                sectionTitle,
+              },
+            }));
+            console.log(sections.education);
+            break;
+            }
+
+            case sections.achievement: {
+              const tempDetail = {
+                certificationLink: values.certificationLink,
+                title: values.title,
+                startDate: values.startDate,
+                endDate: values.endDate,
+                companyName: values.companyName,
+                location: values.location,
+                points: values.points,
+              };
+              const tempDetails = [...sections.achievement.details];
+              tempDetails[activeIndex] = tempDetail;
+      
+              props.setSections((prev) => ({
+                ...prev,
+                achievement: {
+                  ...prev[sections.achievement],
+                  details: tempDetails,
+                  sectionTitle,
+                },
+              }));
+              console.log(sections.achievement);
+              break;
+              }
+
+              case sections.summary: {
+                const tempDetail = {
+                  certificationLink: values.certificationLink,
+                  title: values.title,
+                  startDate: values.startDate,
+                  endDate: values.endDate,
+                  companyName: values.companyName,
+                  location: values.location,
+                  points: values.points,
+                };
+        
+                props.setSections((prev) => ({
+                  ...prev,
+                  summary: {
+                    ...prev[sections.summary],
+                    details: tempDetail,
+                    sectionTitle,
+                  },
+                }));
+                console.log(sections.summary);
+                break;
+                }
+
+                case sections.others: {
+                  const tempDetail = {
+                    certificationLink: values.certificationLink,
+                    title: values.title,
+                    startDate: values.startDate,
+                    endDate: values.endDate,
+                    companyName: values.companyName,
+                    location: values.location,
+                    points: values.points,
+                  };
+                  props.setSections((prev) => ({
+                    ...prev,
+                    others: {
+                      ...prev[sections.others],
+                      details: tempDetail,
+                      sectionTitle,
+                    },
+                  }));
+                  break;
+                  }
+    }
+   }
+   
+
   return(
      <>
      <div className={styles.container}>
@@ -440,6 +612,7 @@ const Editor = (props) =>{
        <div className={styles.body} >
         
         {generateBody()}
+        <button onClick={handleSubmission}>Save</button>
        </div>
 
 
