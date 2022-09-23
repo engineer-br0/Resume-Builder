@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styles from './Editor.module.css'
 import InputControl from "./InputControl";
+import { X } from "react-feather";
 
 const Editor = (props) =>{
    const sections = props.sections;
    const [activeSectionKey, setActiveSectionKey] = useState(Object.keys(sections)[0]); 
    const [activeIndex, setActiveIndex] = useState(0);
    const [sectionTitle, setSectionTitle] = useState(sections[activeSectionKey].sectionTitle);
+   const [activeInformation, setActiveInformation] = useState(sections[Object.keys(sections)[0]]);
    const [values, setValues] = useState({
     // name : sections[activeSectionKey]?.detail?.name || "",
     // title : sections[activeSectionKey]?.detail?.title || "",
@@ -589,10 +591,15 @@ const Editor = (props) =>{
     }
    }
 
+   const handleNewChip = () =>{
+     setActiveIndex()
+   }
+
    useEffect(() =>{
+    setActiveInformation(sections[activeSectionKey]);
     setSectionTitle(sections[activeSectionKey].sectionTitle);
 
-    const activeInfo = sections[activeSectionKey]
+    const activeInfo = sections[activeSectionKey];
     setValues({
       name : activeInfo.detail?.name || "",
       title : activeInfo.details 
@@ -634,7 +641,21 @@ const Editor = (props) =>{
       summary: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
       other: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
     })
-  },[activeSectionKey])
+  },[activeSectionKey]);
+
+  useEffect(()=>{
+    const activeInfo = sections[activeSectionKey];
+    if(activeInfo.details)
+    setValues(
+      {
+        title : activeInfo?.details[activeIndex]?.title || "",
+        
+      }
+    )},[activeIndex])
+
+  useEffect(() => {
+    setActiveInformation(sections[activeSectionKey]);
+  }, [sections]);
    
   return(
      <>
@@ -652,6 +673,29 @@ const Editor = (props) =>{
        </div>
 
        <div className={styles.body} >
+
+        <div className={styles.chips}>
+          {activeInformation?.details 
+            ? activeInformation?.details?.map((item, index)=>(
+             <div 
+              className={`${styles.chip} ${index === activeIndex && styles.active}`}
+              // onClick={setActiveIndex(index)}
+              >
+                <p> {sectionTitle} {index + 1} </p>
+                <X/>
+              </div>
+            ))
+            : ""}
+
+              {activeInformation.details 
+              ? activeInformation.details.length > 0 
+                ? <div className={styles.new} onClick={handleNewChip}>
+                  +New
+                  </div>
+                :""
+              :""
+            }
+        </div>
         
         {generateBody()}
         <button onClick={handleSubmission}>Save</button>
@@ -664,21 +708,6 @@ const Editor = (props) =>{
 }
 
 export default Editor;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
