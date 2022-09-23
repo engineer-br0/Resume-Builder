@@ -17,10 +17,6 @@ const Editor = (props) =>{
     points : []
    })
 
-   useEffect(() =>{
-     setSectionTitle(sections[activeSectionKey].sectionTitle);
-
-   },[activeSectionKey])
 
    const handlePointUpdate = (data, key) => {
      //if(!Array.isArray(values.points)) values.points = [];
@@ -592,8 +588,54 @@ const Editor = (props) =>{
                   }
     }
    }
-   
 
+   useEffect(() =>{
+    setSectionTitle(sections[activeSectionKey].sectionTitle);
+
+    const activeInfo = sections[activeSectionKey]
+    setValues({
+      name : activeInfo.detail?.name || "",
+      title : activeInfo.details 
+        ? activeInfo.details[0]?.title || "" 
+        : activeInfo.detail?.title || "",
+      overview: activeInfo?.details
+        ? activeInfo.details[0]?.overview || ""
+        : "",
+      link: activeInfo?.details ? activeInfo.details[0]?.link || "" : "",
+      certificationLink: activeInfo?.details
+        ? activeInfo.details[0]?.certificationLink || ""
+        : "",
+      companyName: activeInfo?.details
+        ? activeInfo.details[0]?.companyName || ""
+        : "",
+      college: activeInfo?.details
+        ? activeInfo.details[0]?.college || ""
+        : "",
+      location: activeInfo?.details
+        ? activeInfo.details[0]?.location || ""
+        : "",
+      startDate: activeInfo?.details
+        ? activeInfo.details[0]?.startDate || ""
+        : "",
+      endDate: activeInfo?.details ? activeInfo.details[0]?.endDate || "" : "",
+      points: activeInfo?.details
+        ? activeInfo.details[0]?.points
+          ? [...activeInfo.details[0]?.points]
+          : ""
+        : activeInfo?.points
+          ? [...activeInfo.points]
+          : "",
+      linkedin: activeInfo?.detail?.linkedin || "",
+      github: activeInfo?.details
+        ? activeInfo.details[0]?.github || ""
+        : activeInfo?.detail?.github || "",
+      phone: activeInfo?.detail?.phone || "",
+      email: activeInfo?.detail?.email || "",
+      summary: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
+      other: typeof activeInfo?.detail !== "object" ? activeInfo.detail : "",
+    })
+  },[activeSectionKey])
+   
   return(
      <>
      <div className={styles.container}>
