@@ -21,7 +21,7 @@ const Editor = (props) =>{
 
 
    const handlePointUpdate = (data, key) => {
-     //if(!Array.isArray(values.points)) values.points = [];
+     if(!Array.isArray(values.points)) values.points = [];
      let tempValues = {...values};
      tempValues.points[key] = data;
      setValues(tempValues);
@@ -592,8 +592,25 @@ const Editor = (props) =>{
    }
 
    const handleNewChip = () =>{
-     setActiveIndex()
+     const tempDetails = activeInformation.details;
+     const lastDetail = tempDetails.slice(-1)[0];
+     if(!Object.keys(lastDetail).length) return;
+     tempDetails.push({});
+     props.setSections((prev) =>({
+      ...prev,
+      [sections[activeSectionKey]] : {
+        ...prev[sections[activeSectionKey]],
+        details : tempDetails,
+      }
+     }))
+     setActiveIndex(tempDetails.length-1);
    }
+
+  //  const handleDeleteChip = (index) =>{
+  //   const tempDetail = activeInformation.details;
+  //   tempDetail.splice(index, 1);
+  //   props.setSections
+  //  }
 
    useEffect(() =>{
     setActiveInformation(sections[activeSectionKey]);
@@ -649,7 +666,17 @@ const Editor = (props) =>{
     setValues(
       {
         title : activeInfo?.details[activeIndex]?.title || "",
-        
+        overview: activeInfo.details[activeIndex]?.overview || "",
+        link: activeInfo.details[activeIndex]?.link || "",
+        certificationLink: activeInfo.details[activeIndex]?.certificationLink || "",
+        companyName: activeInfo.details[activeIndex]?.companyName || "",
+        location: activeInfo.details[activeIndex]?.location || "",
+        startDate: activeInfo.details[activeIndex]?.startDate || "",
+        endDate: activeInfo.details[activeIndex]?.endDate || "",
+        points: activeInfo.details[activeIndex]?.points || "",
+        linkedin: activeInfo.details[activeIndex]?.linkedin || "",
+        github: activeInfo.details[activeIndex]?.github || "",
+        college: activeInfo.details[activeIndex]?.college || "",
       }
     )},[activeIndex])
 
@@ -679,10 +706,12 @@ const Editor = (props) =>{
             ? activeInformation?.details?.map((item, index)=>(
              <div 
               className={`${styles.chip} ${index === activeIndex && styles.active}`}
-              // onClick={setActiveIndex(index)}
+               onClick={()=> setActiveIndex(index)}
               >
                 <p> {sectionTitle} {index + 1} </p>
-                <X/>
+                <X
+                 //onClick={handleDeleteChip}
+                />
               </div>
             ))
             : ""}
@@ -708,6 +737,18 @@ const Editor = (props) =>{
 }
 
 export default Editor;
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

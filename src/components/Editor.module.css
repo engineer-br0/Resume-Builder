@@ -103,7 +103,7 @@
   
   .chip p {
     font-weight: 500;
-    line-height: 1.25rem;
+    line-height: 1px;
     color: #fff;
   }
   .chip svg {
