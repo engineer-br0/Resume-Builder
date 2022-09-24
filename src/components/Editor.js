@@ -606,11 +606,18 @@ const Editor = (props) =>{
      setActiveIndex(tempDetails.length-1);
    }
 
-  //  const handleDeleteChip = (index) =>{
-  //   const tempDetail = activeInformation.details;
-  //   tempDetail.splice(index, 1);
-  //   props.setSections
-  //  }
+   const handleDeleteChip = (index) =>{
+    const tempDetails = activeInformation.details;
+    tempDetails.splice(index, 1);
+    props.setSections((prev)=>({
+      ...prev,
+      [sections[activeSectionKey]] : {
+        ...prev[sections[activeSectionKey]],
+        details : tempDetails
+      }
+    }))
+    setActiveIndex(activeIndex <= index ? 0 : activeIndex-1);
+   }
 
    useEffect(() =>{
     setActiveInformation(sections[activeSectionKey]);
@@ -706,11 +713,14 @@ const Editor = (props) =>{
             ? activeInformation?.details?.map((item, index)=>(
              <div 
               className={`${styles.chip} ${index === activeIndex && styles.active}`}
-               onClick={()=> setActiveIndex(index)}
+              
               >
-                <p> {sectionTitle} {index + 1} </p>
+                <p onClick={()=> setActiveIndex(index)}> {sectionTitle} {index + 1} </p>
                 <X
-                 //onClick={handleDeleteChip}
+                 onClick={()=>{
+                 // event.stopPropagation();
+                  handleDeleteChip(index);
+                 }}
                 />
               </div>
             ))
@@ -737,7 +747,6 @@ const Editor = (props) =>{
 }
 
 export default Editor;
-
 
 
 
