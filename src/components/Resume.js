@@ -2,7 +2,7 @@ import React from "react";
 import styles from './Resume.module.css';
 
 const Resume = (props) =>{
-  const sections = props.sections;
+  const sections = props.sections
   
   return(
 
