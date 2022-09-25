@@ -118,12 +118,3 @@ export default Body;
 
 
 
-
-// import React, { useRef, useState } from "react";
-// import ReactToPrint from "react-to-print";
-// import { ArrowDown } from "react-feather";
-
-// import Resume from "./Resume"
-// import Editor from "./Editor"
-// import "./Body.css";
-

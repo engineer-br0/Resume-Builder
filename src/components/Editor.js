@@ -9,6 +9,7 @@ const Editor = (props) =>{
    const [activeIndex, setActiveIndex] = useState(0);
    const [sectionTitle, setSectionTitle] = useState(sections[activeSectionKey].sectionTitle);
    const [activeInformation, setActiveInformation] = useState(sections[Object.keys(sections)[0]]);
+   const [rerender, setRerender] = useState(1);
    const [values, setValues] = useState({
     // name : sections[activeSectionKey]?.detail?.name || "",
     // title : sections[activeSectionKey]?.detail?.title || "",
@@ -617,6 +618,7 @@ const Editor = (props) =>{
       }
     }))
     setActiveIndex(activeIndex <= index ? 0 : activeIndex-1);
+    setRerender(rerender+1);
    }
 
    useEffect(() =>{
@@ -685,7 +687,7 @@ const Editor = (props) =>{
         github: activeInfo.details[activeIndex]?.github || "",
         college: activeInfo.details[activeIndex]?.college || "",
       }
-    )},[activeIndex])
+    )},[activeIndex,rerender])
 
   useEffect(() => {
     setActiveInformation(sections[activeSectionKey]);
