@@ -5,6 +5,7 @@ import './Body.css'
 import ReactToPrint from "react-to-print";
 import { ArrowDown } from "react-feather";
 import Editor from "./Editor"
+import Resume from "./Resume";
 
 const Body = () =>{
   
@@ -86,6 +87,9 @@ const Body = () =>{
       <Editor 
                 sections={sections}
                 setSections = {setSections}
+      />
+      <Resume
+       sections = {sections}
       />
       </div>
     </div>
