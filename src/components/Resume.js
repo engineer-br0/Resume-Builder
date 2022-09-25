@@ -8,7 +8,7 @@ const Resume = (props) =>{
 
     <>
       <div className={styles.container}>
-        
+        resume
 
       </div>
     </>
