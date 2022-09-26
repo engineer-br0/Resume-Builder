@@ -46,12 +46,12 @@ const Body = () =>{
     summary : {
       id : "Summary",
       sectionTitle : "Summary",
-      detail : {}
+      detail : ""
     },
     others : {
       id : "Others",
       sectionTitle : "Others",
-      detail : {}
+      detail : ""
     }
   });
 

@@ -1,17 +1,24 @@
 import React from "react";
 import styles from './Resume.module.css';
-import { MapPin } from "react-feather";
+import { MapPin, Linkedin, GitHub, AtSign, Phone } from "react-feather";
 
 const Resume = (props) =>{
   const sections = props.sections;
+  const getFormattedDate = (value) =>{
+    let date = new Date(value);
+    return `${date.getDate()} / ${date.getMonth() + 1} / ${date.getFullYear()}`;
+  }
 
   const sectionDiv = {
-     workExp : (
-      <div className={styles.section}>
-       <div className={styles.sectionTitle} > workExp</div>
+
+      workExp : (
+      <div
+      key={"workexp"}
+       className={styles.section}>
+       <div className={styles.sectionTitle} > Work Experiance </div>
        <div className={styles.content} >
         {sections.workExp.details?.map((item) =>(
-          <div className={styles.item}> 
+          <div key={item.title} className={styles.item}> 
             {item.title ?
              <p className={styles.title}> {item.title} </p>
              : ""}  
@@ -23,6 +30,12 @@ const Resume = (props) =>{
               {item.certificationLink ?
                <a className={styles.link}> {item.certificationLink}</a>
                : ""}
+
+               {item.startDate && item.endDate ?
+                 <div className={styles.date}>
+                   {getFormattedDate(item.startDate)} - {getFormattedDate(item.endDate)}
+                  </div>
+                  : ""}
                
                {item.location ?
               <p className={styles.date}>
@@ -30,10 +43,11 @@ const Resume = (props) =>{
               </p>
               : ""}
 
+
               {item.points?.length > 0 ? 
               <ul className={styles.points}>
-               {item.points.map((point) =>(
-                 <li className={styles.point}> {point }</li>
+               {item.points.map((point, index) =>(
+                 <li key={index} className={styles.point}> {point }</li>
                ))}
                </ul>
               : ""}
@@ -43,18 +57,146 @@ const Resume = (props) =>{
     </div>
      ),
 
-     //projects : 
+     projects : (
+      <div key={"project"} className={styles.section}>
+       <div className={styles.sectionTitle} > Projects </div>
+       <div className={styles.content} >
+        {sections.projects.details?.map((item) =>(
+          <div key={item.title} className={styles.item}> 
+            {item.title ?
+             <p className={styles.title}> {item.title} </p>
+             : ""}  
+
+             {item.overview ?
+              <p className={styles.subTitle}> {item.overview}</p>
+              : ""}
+
+              {item.deployedLink ?
+               <a className={styles.link}> {item.deployedLink}</a>
+               : ""}
+               
+               {item.github ?
+              <p className={styles.date}>
+                 <a className={styles.link}> {item.github}</a>
+              </p>
+              : ""}
+
+              {item.points?.length > 0 ? 
+              <ul  className={styles.points}>
+               {item.points.map((point, index) =>(
+                 <li key={index} className={styles.point}> {point }</li>
+               ))}
+               </ul>
+              : ""}
+          </div>
+          ))}
+      </div>
+    </div>
+     ),
+
+     education : (
+      <div
+      key={"education"}
+       className={styles.section}>
+       <div className={styles.sectionTitle} > Education </div>
+       <div className={styles.content} >
+        {sections.education.details?.map((item) =>(
+          <div key={item.title} className={styles.item}> 
+            {item.title ?
+             <p className={styles.title}> {item.title} </p>
+             : ""}  
+
+             {item.college ?
+              <p className={styles.subTitle}> {item.college}</p>
+              : ""}
+
+               {item.startDate && item.endDate ?
+                 <div className={styles.date}>
+                   {getFormattedDate(item.startDate)} - {getFormattedDate(item.endDate)}
+                  </div>
+                  : ""}
+          </div>
+          ))}
+      </div>
+    </div>
+     ),
+
+     achievements: (
+      <div
+        key={"achievements"}
+        className={styles.section}
+        >
+          <div className={styles.sectionTitle}> Achievements </div>
+          <div className={styles.content}>
+            {sections.achievement.details?.map((item)=>(
+              <div className={styles.item} >
+                {item.points?.length > 0 ?
+                  <ul className={styles.points} >
+                    {item.points.map((point)=>(
+                      <li className={styles.point}> {point} </li>
+                    ))}
+                  </ul>
+                 : ""}
+              </div>
+            ))}
+          </div>
+        </div>
+     ),
+
+     summary : (
+      <div 
+        key={"summary"} 
+        className={styles.section}
+        >
+        <div className={styles.sectionTitle}> Summary </div>
+        <div className={styles.content}>
+          <div className={styles.item}>
+            <p className={styles.overview}> {sections.summary?.detail}  </p>
+          </div>
+        </div>
+      </div>
+     ),
+
+     others : (
+      <div 
+        key={"others"} 
+        className={styles.section}
+        >
+        <div className={styles.sectionTitle}> Others </div>
+        <div className={styles.content}>
+          <div className={styles.item}>
+            <p className={styles.overview}> {sections.others?.detail} </p>
+          </div>
+        </div>
+      </div>
+     ),
+
   }
   
   return(
     <>
       <div className={styles.container}>
         <div className={styles.header}>
-        {sections[Object.keys(sections)[0]].detail.name}
+          <div className={styles.heading}>
+            {sections.basicInfo.detail.name}
+          </div>
+          <div className={styles.subHeading}>
+            {sections.basicInfo.detail.title}
+          </div>
+          <div className={styles.links}>
+            <a className={styles.link}> <Linkedin/> {sections.basicInfo.detail.linkedIn}</a>
+            <a className={styles.link}> <GitHub/> {sections.basicInfo.detail.github}</a>
+            <a className={styles.link}> <AtSign/> {sections.basicInfo.detail.email}</a>
+            <a className={styles.link}> <Phone/> {sections.basicInfo.detail.phone}</a>
+          </div>
         </div>
 
         <div className={styles.main} >
-          {sectionDiv[Object.keys(sectionDiv)]}
+          {Object.keys(sectionDiv).map((key) =>(
+            <div key={key} >
+              {sectionDiv[key]}
+            </div>
+          ))}
         </div>
       </div>
     </>
@@ -62,33 +204,3 @@ const Resume = (props) =>{
 }
 
 export default Resume;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -227,7 +227,7 @@ const Editor = (props) =>{
       <div className={styles.row}>
         <InputControl
           label="Deployed Link"
-          value={values.link}
+          value={values.deployedLink}
           placeholder="Enter deployed link of project"
           onChange={(event) =>
             setValues((prev) => ({ ...prev, link: event.target.value }))
@@ -392,10 +392,10 @@ const Editor = (props) =>{
           </div>
       <InputControl
         label="Other"
-        value={values.other}
+        value={values.others}
         placeholder="Enter something"
         onChange={(event) =>
-          setValues((prev) => ({ ...prev, other: event.target.value }))
+          setValues((prev) => ({ ...prev, others: event.target.value }))
         }
       />
     </div>
@@ -428,7 +428,7 @@ const Editor = (props) =>{
         const tempDetail = {
           name: values.name,
           title: values.title,
-          linkedin: values.linkedin,
+          linkedIn: values.linkedIn,
           github: values.github,
           email: values.email,
           phone: values.phone,
@@ -473,12 +473,12 @@ const Editor = (props) =>{
 
         case sections.projects: {
           const tempDetail = {
-            certificationLink: values.certificationLink,
             title: values.title,
+            overview :values.overview,
             startDate: values.startDate,
             endDate: values.endDate,
-            companyName: values.companyName,
-            location: values.location,
+            deployedLink : values.deployedLink,
+            github : values.github,
             points: values.points,
           };
           const tempDetails = [...sections.projects.details];
@@ -498,13 +498,10 @@ const Editor = (props) =>{
 
           case sections.education: {
             const tempDetail = {
-              certificationLink: values.certificationLink,
               title: values.title,
+              college : values.college,
               startDate: values.startDate,
               endDate: values.endDate,
-              companyName: values.companyName,
-              location: values.location,
-              points: values.points,
             };
             const tempDetails = [...sections.education.details];
             tempDetails[activeIndex] = tempDetail;
@@ -523,12 +520,6 @@ const Editor = (props) =>{
 
             case sections.achievement: {
               const tempDetail = {
-                certificationLink: values.certificationLink,
-                title: values.title,
-                startDate: values.startDate,
-                endDate: values.endDate,
-                companyName: values.companyName,
-                location: values.location,
                 points: values.points,
               };
               const tempDetails = [...sections.achievement.details];
@@ -547,21 +538,15 @@ const Editor = (props) =>{
               }
 
               case sections.summary: {
-                const tempDetail = {
-                  certificationLink: values.certificationLink,
-                  title: values.title,
-                  startDate: values.startDate,
-                  endDate: values.endDate,
-                  companyName: values.companyName,
-                  location: values.location,
-                  points: values.points,
-                };
+                const tempDetail =  values.summary;
+                const tempDetails = [...sections.achievement.details];
+                tempDetails[activeIndex] = tempDetail;
         
                 props.setSections((prev) => ({
                   ...prev,
                   summary: {
                     ...prev[sections.summary],
-                    details: tempDetail,
+                    detail: tempDetail,
                     sectionTitle,
                   },
                 }));
@@ -570,20 +555,15 @@ const Editor = (props) =>{
                 }
 
                 case sections.others: {
-                  const tempDetail = {
-                    certificationLink: values.certificationLink,
-                    title: values.title,
-                    startDate: values.startDate,
-                    endDate: values.endDate,
-                    companyName: values.companyName,
-                    location: values.location,
-                    points: values.points,
-                  };
+                  const tempDetail =  values.others;
+                  const tempDetails = [...sections.achievement.details];
+                  tempDetails[activeIndex] = tempDetail;
+
                   props.setSections((prev) => ({
                     ...prev,
                     others: {
                       ...prev[sections.others],
-                      details: tempDetail,
+                      detail: tempDetail,
                       sectionTitle,
                     },
                   }));
@@ -699,7 +679,7 @@ const Editor = (props) =>{
 
       <div className={styles.header}>
        {Object.keys(sections)?.map((key)=>(
-        <div 
+        <div key={key}
          className={`${styles.section} ${(key === activeSectionKey ? styles.active : "") }`}
          onClick = {() => {setActiveSectionKey(key)}}
         >
