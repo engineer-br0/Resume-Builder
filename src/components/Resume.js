@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from './Resume.module.css';
 import { MapPin, Linkedin, GitHub, AtSign, Phone } from "react-feather";
 
@@ -15,7 +15,7 @@ const Resume = (props) =>{
       <div
       key={"workexp"}
        className={styles.section}>
-       <div className={styles.sectionTitle} > Work Experiance </div>
+       <div className={styles.sectionTitle} > {sections.workExp.sectionTitle} </div>
        <div className={styles.content} >
         {sections.workExp.details?.map((item) =>(
           <div key={item.title} className={styles.item}> 
@@ -59,7 +59,7 @@ const Resume = (props) =>{
 
      projects : (
       <div key={"project"} className={styles.section}>
-       <div className={styles.sectionTitle} > Projects </div>
+       <div className={styles.sectionTitle} > {sections.projects.sectionTitle} </div>
        <div className={styles.content} >
         {sections.projects.details?.map((item) =>(
           <div key={item.title} className={styles.item}> 
@@ -98,7 +98,7 @@ const Resume = (props) =>{
       <div
       key={"education"}
        className={styles.section}>
-       <div className={styles.sectionTitle} > Education </div>
+       <div className={styles.sectionTitle} > {sections.education.sectionTitle} </div>
        <div className={styles.content} >
         {sections.education.details?.map((item) =>(
           <div key={item.title} className={styles.item}> 
@@ -126,7 +126,7 @@ const Resume = (props) =>{
         key={"achievements"}
         className={styles.section}
         >
-          <div className={styles.sectionTitle}> Achievements </div>
+          <div className={styles.sectionTitle}> {sections.achievement.sectionTitle} </div>
           <div className={styles.content}>
             {sections.achievement.details?.map((item)=>(
               <div className={styles.item} >
@@ -148,7 +148,7 @@ const Resume = (props) =>{
         key={"summary"} 
         className={styles.section}
         >
-        <div className={styles.sectionTitle}> Summary </div>
+        <div className={styles.sectionTitle}> {sections.summary.sectionTitle} </div>
         <div className={styles.content}>
           <div className={styles.item}>
             <p className={styles.overview}> {sections.summary?.detail}  </p>
@@ -162,7 +162,7 @@ const Resume = (props) =>{
         key={"others"} 
         className={styles.section}
         >
-        <div className={styles.sectionTitle}> Others </div>
+        <div className={styles.sectionTitle}> {sections.others.sectionTitle} </div>
         <div className={styles.content}>
           <div className={styles.item}>
             <p className={styles.overview}> {sections.others?.detail} </p>
@@ -172,6 +172,10 @@ const Resume = (props) =>{
      ),
 
   }
+
+  // useEffect(()=>{
+  //   Resume.style.setProperty('--color', props.activeColor);
+  // },[props.activeColor])
   
   return(
     <>
