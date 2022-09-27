@@ -734,8 +734,8 @@ const Editor = (props) =>{
               >
                 <p onClick={()=> setActiveIndex(index)}> {sectionTitle} {index + 1} </p>
                 <X
-                 onClick={()=>{
-                 // event.stopPropagation();
+                 onClick={(event)=>{
+                  //event.stopPropagation();
                   handleDeleteChip(index);
                  }}
                 />

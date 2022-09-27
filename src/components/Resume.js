@@ -18,33 +18,32 @@ const Resume = (props) =>{
        <div className={styles.sectionTitle} > {sections.workExp.sectionTitle} </div>
        <div className={styles.content} >
         {sections.workExp.details?.map((item) =>(
-          <div key={item.title} className={styles.item}> 
-            {item.title ?
-             <p className={styles.title}> {item.title} </p>
+          <div key={item?.title} className={styles.item}>  
+            {item?.title ?
+             <p className={styles.title}> {(item.title)} </p>
              : ""}  
-
-             {item.companyName ?
+             {item?.companyName ?
               <p className={styles.subTitle}> {item.companyName}</p>
               : ""}
 
-              {item.certificationLink ?
+              {item?.certificationLink ?
                <a className={styles.link}> {item.certificationLink}</a>
                : ""}
 
-               {item.startDate && item.endDate ?
+               {item?.startDate && item.endDate ?
                  <div className={styles.date}>
                    {getFormattedDate(item.startDate)} - {getFormattedDate(item.endDate)}
                   </div>
                   : ""}
                
-               {item.location ?
+               {item?.location ?
               <p className={styles.date}>
                  <MapPin/>{item.location}
               </p>
               : ""}
 
 
-              {item.points?.length > 0 ? 
+              {item?.points?.length > 0 ? 
               <ul className={styles.points}>
                {item.points.map((point, index) =>(
                  <li key={index} className={styles.point}> {point }</li>
@@ -62,26 +61,25 @@ const Resume = (props) =>{
        <div className={styles.sectionTitle} > {sections.projects.sectionTitle} </div>
        <div className={styles.content} >
         {sections.projects.details?.map((item) =>(
-          <div key={item.title} className={styles.item}> 
-            {item.title ?
-             <p className={styles.title}> {item.title} </p>
+          <div key={item?.title} className={styles.item}> 
+            {item?.title ?
+             <p className={styles.title}> {(item.title)} </p>
              : ""}  
-
-             {item.overview ?
+             {item?.overview ?
               <p className={styles.subTitle}> {item.overview}</p>
               : ""}
 
-              {item.deployedLink ?
+              {item?.deployedLink ?
                <a className={styles.link}> {item.deployedLink}</a>
                : ""}
                
-               {item.github ?
+               {item?.github ?
               <p className={styles.date}>
                  <a className={styles.link}> {item.github}</a>
               </p>
               : ""}
 
-              {item.points?.length > 0 ? 
+              {item?.points?.length > 0 ? 
               <ul  className={styles.points}>
                {item.points.map((point, index) =>(
                  <li key={index} className={styles.point}> {point }</li>
@@ -89,6 +87,7 @@ const Resume = (props) =>{
                </ul>
               : ""}
           </div>
+               
           ))}
       </div>
     </div>
@@ -100,17 +99,17 @@ const Resume = (props) =>{
        className={styles.section}>
        <div className={styles.sectionTitle} > {sections.education.sectionTitle} </div>
        <div className={styles.content} >
-        {sections.education.details?.map((item) =>(
+        {sections.education.details?.map((item,index) =>(
           <div key={item.title} className={styles.item}> 
-            {item.title ?
+            {item?.title ?
              <p className={styles.title}> {item.title} </p>
              : ""}  
 
-             {item.college ?
+             {item?.college ?
               <p className={styles.subTitle}> {item.college}</p>
               : ""}
 
-               {item.startDate && item.endDate ?
+               {item?.startDate && item.endDate ?
                  <div className={styles.date}>
                    {getFormattedDate(item.startDate)} - {getFormattedDate(item.endDate)}
                   </div>
@@ -128,11 +127,11 @@ const Resume = (props) =>{
         >
           <div className={styles.sectionTitle}> {sections.achievement.sectionTitle} </div>
           <div className={styles.content}>
-            {sections.achievement.details?.map((item)=>(
-              <div className={styles.item} >
-                {item.points?.length > 0 ?
+            {sections.achievement.details?.map((item,index)=>(
+              <div key={item.title} className={styles.item} >
+                {item?.points?.length > 0 ?
                   <ul className={styles.points} >
-                    {item.points.map((point)=>(
+                    {item?.points?.map((point)=>(
                       <li className={styles.point}> {point} </li>
                     ))}
                   </ul>
