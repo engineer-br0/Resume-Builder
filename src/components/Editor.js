@@ -608,18 +608,20 @@ const Editor = (props) =>{
    }
 
    const handleNewChip = () =>{
-     const tempDetails = activeInformation.details;
+     //const tempDetails = activeInformation.details;
+     const tempDetails = sections[activeSectionKey]?.details;
+     if (!tempDetails) return;
      const lastDetail = tempDetails.slice(-1)[0];
      if(!Object.keys(lastDetail).length) return;
-     tempDetails.push({});
+     tempDetails?.push({});
      props.setSections((prev) =>({
       ...prev,
       [sections[activeSectionKey]] : {
-        ...prev[sections[activeSectionKey]],
+        ...sections[activeSectionKey],
         details : tempDetails,
       }
      }))
-     setActiveIndex(tempDetails.length-1);
+     setActiveIndex(tempDetails?.length-1);
    }
 
    const handleDeleteChip = (index) =>{
@@ -639,7 +641,7 @@ const Editor = (props) =>{
    useEffect(() =>{
     setActiveInformation(sections[activeSectionKey]);
     setSectionTitle(sections[activeSectionKey].sectionTitle);
-
+    setActiveIndex(0); //important
     const activeInfo = sections[activeSectionKey];
     setValues({
       name : activeInfo.detail?.name || "",
@@ -726,8 +728,9 @@ const Editor = (props) =>{
        <div className={styles.body} >
 
         <div className={styles.chips}>
-          {activeInformation?.details 
-            ? activeInformation?.details?.map((item, index)=>(
+          {/* {activeInformation?.details  */}
+          {sections[activeSectionKey]?.details
+            ? sections[activeSectionKey]?.details?.map((item, index)=>(
              <div 
               className={`${styles.chip} ${index === activeIndex && styles.active}`}
               
@@ -743,8 +746,8 @@ const Editor = (props) =>{
             ))
             : ""}
 
-              {activeInformation.details 
-              ? activeInformation.details.length > 0 
+              {sections[activeSectionKey]?.details 
+              ? sections[activeSectionKey]?.details?.length > 0 
                 ? <div className={styles.new} onClick={handleNewChip}>
                   +New
                   </div>

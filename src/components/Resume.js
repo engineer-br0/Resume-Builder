@@ -100,7 +100,7 @@ const Resume = (props) =>{
        <div className={styles.sectionTitle} > {sections.education.sectionTitle} </div>
        <div className={styles.content} >
         {sections.education.details?.map((item,index) =>(
-          <div key={item.title} className={styles.item}> 
+          <div key={item?.title} className={styles.item}> 
             {item?.title ?
              <p className={styles.title}> {item.title} </p>
              : ""}  
@@ -128,7 +128,7 @@ const Resume = (props) =>{
           <div className={styles.sectionTitle}> {sections.achievement.sectionTitle} </div>
           <div className={styles.content}>
             {sections.achievement.details?.map((item,index)=>(
-              <div key={item.title} className={styles.item} >
+              <div key={item?.title} className={styles.item} >
                 {item?.points?.length > 0 ?
                   <ul className={styles.points} >
                     {item?.points?.map((point)=>(
