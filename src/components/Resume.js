@@ -19,22 +19,28 @@ const Resume = (props) =>{
        <div className={styles.content} >
         {sections.workExp.details?.map((item) =>(
           <div key={item?.title} className={styles.item}>  
+          <div className={styles.sectionKeAndar}>
+          <div className={styles.sectionKeAndar}>
             {item?.title ?
              <p className={styles.title}> {(item.title)} </p>
              : ""}  
              {item?.companyName ?
-              <p className={styles.subTitle}> {item.companyName}</p>
+              <p className={styles.subTitle}> {" , " + item.companyName}</p>
               : ""}
+             </div>
+             {item?.startDate && item.endDate ?
+                 <div className={styles.date}>
+                   {getFormattedDate(item.startDate)} - {getFormattedDate(item.endDate)}
+                  </div>
+                  : ""} 
+              
+          </div>    
 
               {item?.certificationLink ?
                <a className={styles.link}> {item.certificationLink}</a>
                : ""}
 
-               {item?.startDate && item.endDate ?
-                 <div className={styles.date}>
-                   {getFormattedDate(item.startDate)} - {getFormattedDate(item.endDate)}
-                  </div>
-                  : ""}
+               
                
                {item?.location ?
               <p className={styles.date}>
@@ -60,15 +66,17 @@ const Resume = (props) =>{
       <div key={"project"} className={styles.section}>
        <div className={styles.sectionTitle} > {sections.projects.sectionTitle} </div>
        <div className={styles.content} >
+        
         {sections.projects.details?.map((item) =>(
           <div key={item?.title} className={styles.item}> 
+          
             {item?.title ?
-             <p className={styles.title}> {(item.title)} </p>
+             <p className={styles.subTitle}> {(item.title)} </p>
              : ""}  
              {item?.overview ?
-              <p className={styles.subTitle}> {item.overview}</p>
+              <p className={styles.date}> {item.overview}</p>
               : ""}
-
+<div className={styles.sectionKeAndarLinks}>
               {item?.deployedLink ?
                <a className={styles.link}> {item.deployedLink}</a>
                : ""}
@@ -78,7 +86,7 @@ const Resume = (props) =>{
                  <a className={styles.link}> {item.github}</a>
               </p>
               : ""}
-
+</div>
               {item?.points?.length > 0 ? 
               <ul  className={styles.points}>
                {item.points.map((point, index) =>(
@@ -101,19 +109,22 @@ const Resume = (props) =>{
        <div className={styles.content} >
         {sections.education.details?.map((item,index) =>(
           <div key={item?.title} className={styles.item}> 
+          <div className={styles.sectionKeAndar}>
             {item?.title ?
-             <p className={styles.title}> {item.title} </p>
+             <p className={styles.subTitle}> {item.title} </p>
              : ""}  
-
-             {item?.college ?
-              <p className={styles.subTitle}> {item.college}</p>
-              : ""}
-
-               {item?.startDate && item.endDate ?
+             {item?.startDate && item.endDate ?
                  <div className={styles.date}>
                    {getFormattedDate(item.startDate)} - {getFormattedDate(item.endDate)}
                   </div>
                   : ""}
+                  </div>
+
+             {item?.college ?
+              <p className={styles.title}> {item.college}</p>
+              : ""}
+
+               
           </div>
           ))}
       </div>

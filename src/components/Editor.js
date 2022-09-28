@@ -248,7 +248,7 @@ const Editor = (props) =>{
           value={values.deployedLink || ""}
           placeholder="Enter deployed link of project"
           onChange={(event) =>
-            setValues((prev) => ({ ...prev, link: event.target.value }))
+            setValues((prev) => ({ ...prev, deployedLink: event.target.value }))
           }
         />
         <InputControl
@@ -617,7 +617,7 @@ const Editor = (props) =>{
      props.setSections((prev) =>({
       ...prev,
       [sections[activeSectionKey]] : {
-        ...sections[activeSectionKey],
+        ...prev[sections[activeSectionKey]],
         details : tempDetails,
       }
      }))
