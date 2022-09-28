@@ -616,12 +616,12 @@ const Editor = (props) =>{
      tempDetails?.push({});
      props.setSections((prev) =>({
       ...prev,
-      [sections[activeSectionKey]] : {
-        ...prev[sections[activeSectionKey]],
+      [activeSectionKey] : {
+        ...prev[activeSectionKey],
         details : tempDetails,
       }
      }))
-     setActiveIndex(tempDetails?.length-1);
+    setActiveIndex(tempDetails?.length-1);
    }
 
    const handleDeleteChip = (index) =>{
@@ -629,8 +629,8 @@ const Editor = (props) =>{
     tempDetails.splice(index, 1);
     props.setSections((prev)=>({
       ...prev,
-      [sections[activeSectionKey]] : {
-        ...prev[sections[activeSectionKey]],
+      [activeSectionKey] : {
+        ...prev[activeSectionKey],
         details : tempDetails
       }
     }))
@@ -733,7 +733,7 @@ const Editor = (props) =>{
             ? sections[activeSectionKey]?.details?.map((item, index)=>(
              <div 
               className={`${styles.chip} ${index === activeIndex && styles.active}`}
-              
+              key={index}
               >
                 <p onClick={()=> setActiveIndex(index)}> {sectionTitle} {index + 1} </p>
                 <X

@@ -67,8 +67,8 @@ const Resume = (props) =>{
        <div className={styles.sectionTitle} > {sections.projects.sectionTitle} </div>
        <div className={styles.content} >
         
-        {sections.projects.details?.map((item) =>(
-          <div key={item?.title} className={styles.item}> 
+        {sections.projects.details?.map((item, index) =>(
+          <div key={item?.title + index} className={styles.item}> 
           
             {item?.title ?
              <p className={styles.subTitle}> {(item.title)} </p>
