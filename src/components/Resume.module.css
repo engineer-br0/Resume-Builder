@@ -1,11 +1,11 @@
 .container {
     --color: #239ce2;
-    min-width: 500px;
+    /* min-width: 500px; */
     max-width: 850px;
     margin: 0 auto;
     flex: 1.2;
     height: fit-content;
-    min-height: 900px;
+    min-height: 1000px;
     box-shadow: 1px 1px 3px 2px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
@@ -39,6 +39,7 @@
   }
   
   .header .link {
+    color: black;
     font-size: 0.875rem;
     display: flex;
     align-items: center;

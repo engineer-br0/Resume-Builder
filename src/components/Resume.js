@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from './Resume.module.css';
 import { MapPin, Linkedin, GitHub, AtSign, Phone } from "react-feather";
 
-const Resume = (props) =>{
+const Resume = React.forwardRef((props,ref) =>{
   const sections = props.sections;
   const getFormattedDate = (value) =>{
     let date = new Date(value);
@@ -10,6 +10,19 @@ const Resume = (props) =>{
   }
 
   const sectionDiv = {
+    summary : (
+      <div 
+        key={"summary"} 
+        className={styles.section}
+        >
+        <div className={styles.sectionTitle}> {sections.summary.sectionTitle} </div>
+        <div className={styles.content}>
+          <div className={styles.item}>
+            <p className={styles.overview}> {sections.summary?.detail}  </p>
+          </div>
+        </div>
+      </div>
+     ),
 
       workExp : (
       <div
@@ -153,19 +166,6 @@ const Resume = (props) =>{
         </div>
      ),
 
-     summary : (
-      <div 
-        key={"summary"} 
-        className={styles.section}
-        >
-        <div className={styles.sectionTitle}> {sections.summary.sectionTitle} </div>
-        <div className={styles.content}>
-          <div className={styles.item}>
-            <p className={styles.overview}> {sections.summary?.detail}  </p>
-          </div>
-        </div>
-      </div>
-     ),
 
      others : (
       <div 
@@ -189,7 +189,8 @@ const Resume = (props) =>{
   
   return(
     <>
-      <div className={styles.container}>
+    <div >
+      <div ref={ref} className={styles.container}>
         <div className={styles.header}>
           <div className={styles.heading}>
             {sections.basicInfo.detail.name}
@@ -213,8 +214,9 @@ const Resume = (props) =>{
           ))}
         </div>
       </div>
+      </div>
     </>
   ); 
-}
+})
 
 export default Resume;
