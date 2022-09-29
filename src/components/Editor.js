@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from './Editor.module.css'
 import InputControl from "./InputControl";
 import { X } from "react-feather";
 
 const Editor = (props) =>{
+   const containerRef = useRef();
    const sections = props.sections;
    const [activeSectionKey, setActiveSectionKey] = useState(Object.keys(sections)[0]); 
    const [activeIndex, setActiveIndex] = useState(0);
@@ -710,9 +711,14 @@ const Editor = (props) =>{
     setActiveInformation(sections[activeSectionKey]);
   }, [sections]);
    
+  useEffect(()=>{
+    const colorRef = containerRef.current;
+    colorRef.style.setProperty('--color', props.activeColor);
+  },[props.activeColor])
+
   return(
      <>
-     <div className={styles.container}>
+     <div ref={containerRef} className={styles.container}>
 
       <div className={styles.header}>
        {Object.keys(sections)?.map((key)=>(
@@ -733,7 +739,7 @@ const Editor = (props) =>{
             ? sections[activeSectionKey]?.details?.map((item, index)=>(
              <div 
               className={`${styles.chip} ${index === activeIndex && styles.active}`}
-              key={index}
+              key={item + index}
               >
                 <p onClick={()=> setActiveIndex(index)}> {sectionTitle} {index + 1} </p>
                 <X

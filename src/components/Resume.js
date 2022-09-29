@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useRef} from "react";
 import styles from './Resume.module.css';
 import { MapPin, Linkedin, GitHub, AtSign, Phone } from "react-feather";
 
@@ -183,14 +183,18 @@ const Resume = React.forwardRef((props,ref) =>{
 
   }
 
-  // useEffect(()=>{
-  //   Resume.style.setProperty('--color', props.activeColor);
-  // },[props.activeColor])
+  const containerRef = useRef();
+
+  useEffect(()=>{
+    const colorRef = containerRef.current;
+    colorRef.style.setProperty('--color', props.activeColor);
+  },[props.activeColor])
+
   
   return(
     <>
-    <div >
-      <div ref={ref} className={styles.container}>
+    <div ref={ref}>
+      <div  ref={containerRef} className={styles.container}>
         <div className={styles.header}>
           <div className={styles.heading}>
             {sections.basicInfo.detail.name}
