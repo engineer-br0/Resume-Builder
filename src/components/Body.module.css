@@ -16,6 +16,7 @@
   }
   
   .toolbar {
+    margin-top: 50px;
     width: 100vw;
     padding: 0 10px;
     display: flex;

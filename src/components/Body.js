@@ -69,7 +69,7 @@ const Body = () =>{
   return(
     <>
     <div ref={containerRef} className={style.container} >
-      <h1 className={style.heading}> Resume Builder </h1>
+      {/* <h1 className={style.heading}> Resume Builder </h1> */}
 
       <div className={style.toolbar}>
         <div className={style.colors} >
