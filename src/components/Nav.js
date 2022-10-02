@@ -1,18 +1,25 @@
 import React from "react";
 import styles from './Nav.module.css'
-import Font,{Text} from "react-font";
 import { Link } from "react-router-dom";
+import cv from '../images/check.png'
 
 const Nav = () =>{
    return(
     <>
     <div className={styles.container}>
-    <Link to="/">
-    <Text family="BrushScriptMT" className={ `${styles.tag} ${styles.colored}`}> Resume </Text>
+    <Link className={styles.container} to="/">
+    <img src={cv} />
+    <p  className={ `${styles.tag} ${styles.colored}`}> OutLine. </p>
     </Link>
+    <div className={styles.container2}>
     <Link to="/">
-    <Text > Home </Text>
+    <p className={styles.item}> Home </p>
     </Link>
+
+    <Link to="/body">
+      <button className={styles.item}>Create your CV Now</button>
+     </Link>
+    </div>
     </div>
    
     </>

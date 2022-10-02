@@ -1,19 +1,6 @@
-.nav{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
 .colored{
-    background-clip: text;
-    background-image: linear-gradient(to right,  red, rgb(248, 191, 186));
-    color: transparent;
-}
-
-.tag{
-    margin: 0;
-    padding: 0 20px;
-    font-size: 40px;
+    color:#239ce2;
 }
 
 .link{
@@ -33,9 +20,6 @@
 .left,.right{
     max-width: 100%;
     /* padding: 10px; */
-}
-.heading{
-
 }
 .text{
     max-width: 100%;

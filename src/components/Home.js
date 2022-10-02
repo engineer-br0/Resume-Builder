@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Font,{Text} from "react-font";
 import styles from './Home.module.css'
 import resume from '../images/resume.svg'
 import Nav from "./Nav";
@@ -12,14 +11,14 @@ const Home = () =>{
         <Nav/>
         <div className={styles.front}>
             <div  className={styles.left}> 
-            <div className={ `${styles.heading} ${styles.colored}`} style={{color:"green"}}>Fast. Easy. Effective.</div>
+            <div className={ `${styles.heading} ${styles.colored}`} style={{color:"green"}}>Fast. Easy. Effective & FREE</div>
             <div className={styles.wrapper}>
-            <div className={ `${styles.text}`} >Resume Builder. The Best CV Maker Online. </div>
-            <Text className={ `${styles.text2}`} > </Text>
+            <div className={ `${styles.text}`} >The Best CV Maker Online. </div>
+            <p className={ `${styles.text2}`} > </p>
             </div>
             <div className={styles.wrapper}>
             <div className={ `${styles.text3}`}>If a sheet of paper represents your entire work life, personality, and skills, it better be a pretty amazing piece of paper— </div>
-            <div className={ `${styles.text3}`}>Let Zety do the heavy lifting.</div>
+            <div className={ `${styles.text3}`}>Let <span className={styles.colored}>OutLine</span>  do the heavy lifting.</div>
             </div>
             
             <div className={styles.wrapper}>
