@@ -98,17 +98,21 @@ const Body = () =>{
           />
 
       </div>
-      <div className="main">
-      <Editor 
+      <div className={style.main}>
+      <div className={style.left}>
+      <Editor  
                 sections={sections}
                 setSections = {setSections}
                 activeColor = {activeColor}
       />
-      <Resume
+      </div>
+      <div className={style.right}>
+      <Resume 
        sections = {sections}
        activeColor = {activeColor}
        ref = {resumeRef}
       />
+       </div>
       {/* <Temp ref={resumeRef}/> */}
       </div>
     </div>

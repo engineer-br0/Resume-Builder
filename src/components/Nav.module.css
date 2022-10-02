@@ -60,10 +60,15 @@ a{
             font-size: 30px;
         }
         .container{
-            padding-left: 15px;
+            padding-top: 10px;
+            padding-left: 10px;
             margin-bottom: 15px;
+            gap: 2px;
         }
         .container button{
+            display: none;
+        }
+        .item{
             display: none;
         }
     }
