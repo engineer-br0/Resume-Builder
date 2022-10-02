@@ -16,12 +16,13 @@
   }
   
   .toolbar {
-    margin-top: 50px;
+    margin-top: 0px;
     width: 100vw;
     padding: 0 10px;
     display: flex;
     gap: 40px;
-    justify-content:space-around;
+    justify-content:space-between;
+    padding-right: 50px;
     align-items: center;
   }
   
@@ -75,9 +76,9 @@
       padding: 0 5px;
     }
     .toolbar  {
-      gap: 5px;
       max-width: 100vw;
-      padding: 0 0px;
+      padding: 0 10px;
+      justify-content: space-around;
     }
     .main{
       max-width: 100vw;

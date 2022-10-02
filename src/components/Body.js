@@ -5,6 +5,7 @@ import { ArrowDown, User } from "react-feather";
 import Editor from "./Editor"
 import Resume from "./Resume";
 import style from './Body.module.css'
+import Nav from "./Nav";
 
 // const Temp = React.forwardRef((props,ref)=>(
 //   <div ref={ref}>
@@ -68,8 +69,11 @@ const Body = () =>{
 
   return(
     <>
+    <Nav/>
     <div ref={containerRef} className={style.container} >
       {/* <h1 className={style.heading}> Resume Builder </h1> */}
+      
+      
 
       <div className={style.toolbar}>
         <div className={style.colors} >
