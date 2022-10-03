@@ -1,14 +1,17 @@
-import React from "react";
+import React,{useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import styles from './Home.module.css'
 import resume from '../images/resume.svg'
 import Nav from "./Nav";
 
 const Home = () =>{
+  const [isDarkMode, setIsDarkMode] = useState( false);
+  
   return(
    <>
-    <div className={styles.container}>
-        <Nav/>
+   <Nav setIsDarkMode={setIsDarkMode}/>
+    <div className={ `${isDarkMode ? styles.container2 : styles.container1}`}>
+        
         <div className={styles.front}>
             <div  className={styles.left}> 
             <div className={ `${styles.heading} ${styles.colored}`} style={{color:"green"}}>Fast. Easy. Effective & FREE</div>
@@ -33,6 +36,10 @@ const Home = () =>{
             <img  src={resume} />
             </div>
         </div>
+        
+        <div style={{ position:"fixed", bottom:"10px", width:"100%", textAlign:"center", fontWeight:"lighter"}}>©Mridul Sharma 2022</div>
+
+        
         
     </div>
    </>

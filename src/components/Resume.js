@@ -13,7 +13,7 @@ const Resume = React.forwardRef((props,ref) =>{
     summary : (
       <div 
         key={"summary"} 
-        className={styles.section}
+        className={` ${sections.summary.sectionTitle? styles.section : styles.hidden} `}
         >
         <div className={styles.sectionTitle}> {sections.summary.sectionTitle} </div>
         <div className={styles.content}>
@@ -27,7 +27,8 @@ const Resume = React.forwardRef((props,ref) =>{
       workExp : (
       <div
       key={"workexp"}
-       className={styles.section}>
+      className={` ${sections.workExp.sectionTitle? styles.section : styles.hidden} `}
+      >
        <div className={styles.sectionTitle} > {sections.workExp.sectionTitle} </div>
        <div className={styles.content} >
         {sections.workExp.details?.map((item) =>(
@@ -76,7 +77,9 @@ const Resume = React.forwardRef((props,ref) =>{
      ),
 
      projects : (
-      <div key={"project"} className={styles.section}>
+      <div key={"project"}
+       className={` ${sections.projects.sectionTitle? styles.section : styles.hidden} `}
+      >
        <div className={styles.sectionTitle} > {sections.projects.sectionTitle} </div>
        <div className={styles.content} >
         
@@ -117,7 +120,8 @@ const Resume = React.forwardRef((props,ref) =>{
      education : (
       <div
       key={"education"}
-       className={styles.section}>
+      className={` ${sections.education.sectionTitle? styles.section : styles.hidden} `}
+      >
        <div className={styles.sectionTitle} > {sections.education.sectionTitle} </div>
        <div className={styles.content} >
         {sections.education.details?.map((item,index) =>(
@@ -147,7 +151,7 @@ const Resume = React.forwardRef((props,ref) =>{
      achievements: (
       <div
         key={"achievements"}
-        className={styles.section}
+        className={` ${sections.achievement.sectionTitle? styles.section : styles.hidden} `}
         >
           <div className={styles.sectionTitle}> {sections.achievement.sectionTitle} </div>
           <div className={styles.content}>
@@ -170,7 +174,7 @@ const Resume = React.forwardRef((props,ref) =>{
      others : (
       <div 
         key={"others"} 
-        className={styles.section}
+        className={` ${sections.others.sectionTitle? styles.section : styles.hidden} `}
         >
         <div className={styles.sectionTitle}> {sections.others.sectionTitle} </div>
         <div className={styles.content}>

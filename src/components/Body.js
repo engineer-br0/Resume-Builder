@@ -14,6 +14,8 @@ import Nav from "./Nav";
 // ))
 
 const Body = () =>{
+  const [isDarkMode, setIsDarkMode] = useState( false);
+  console.log(isDarkMode);
   
   const colors = ["#239ce2", "#48bb78", "#0bc5ea", "#a0aec0", "#ed8936"];
   const [activeColor, setActiveColor] = useState(colors[0]);
@@ -52,7 +54,7 @@ const Body = () =>{
     },
     summary : {
       id : "Summary",
-      sectionTitle : "Summary",
+      sectionTitle : "Professional Summary",
       detail : ""
     },
     others : {
@@ -69,8 +71,8 @@ const Body = () =>{
 
   return(
     <>
-    <Nav/>
-    <div ref={containerRef} className={style.container} >
+    <Nav setIsDarkMode={setIsDarkMode}/>
+    <div ref={containerRef} className={ `${isDarkMode ? style.container2 : style.container}`} >
       {/* <h1 className={style.heading}> Resume Builder </h1> */}
       
       
