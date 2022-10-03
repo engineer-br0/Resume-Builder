@@ -7,6 +7,9 @@
    justify-content: space-between;
    align-items: center;
    gap:20px;
+   margin-bottom: 5px;
+   background-color: #fcfffd;
+   backface-visibility: 30;
 }
 .containerDark{
     /* margin-bottom: 30px; */
@@ -16,7 +19,8 @@
     justify-content: space-between;
     align-items: center;
     gap:20px;
-    background-color: rgb(61, 71, 78);
+    margin-bottom: 5px;
+    /* background-color: rgb(61, 71, 78); */
  }
 .container2{
    /* margin-bottom: 30px; */
@@ -26,10 +30,10 @@
    justify-content: space-between;
    align-items: center;
 }
-.container img{
+img{
     height: 40px;
 }
-.container button{
+button{
     padding:10px;
     color:#239ce2;
     border: 1px solid #239ce2;
@@ -49,9 +53,6 @@ a{
     font-size: 25px;
     padding: 10px;
 }
-.item{
-   
-}
 .container .item:hover{
    background-color: #239ce2;
    color: white;
@@ -69,14 +70,11 @@ a{
         .tag{
             font-size: 30px;
         }
-        .container{
+        .container, .containerDark{
             padding-top: 10px;
             padding-left: 10px;
-            margin-bottom: 15px;
+           
             gap: 2px;
-        }
-        .container button{
-            display: none;
         }
         .item{
             display: none;

@@ -17,7 +17,6 @@ const Home = () =>{
             <div className={ `${styles.heading} ${styles.colored}`} style={{color:"green"}}>Fast. Easy. Effective & FREE</div>
             <div className={styles.wrapper}>
             <div className={ `${styles.text}`} >The Best CV Maker Online. </div>
-            <p className={ `${styles.text2}`} > </p>
             </div>
             <div className={styles.wrapper}>
             <div className={ `${styles.text3}`}>If a sheet of paper represents your entire work life, personality, and skills, it better be a pretty amazing piece of paper— </div>

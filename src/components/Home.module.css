@@ -3,6 +3,10 @@
     height: 100vh;
     background-color: rgb(17, 17, 17);
     color: white;
+    padding-top: 15px;
+}
+.container1{
+    padding-top: 15px;
 }
 .colored{
     color:#239ce2;
@@ -35,15 +39,6 @@
     font-weight: bold;
     font-size: 50px;
 }
-.text2{
-    padding:10px;
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight: lighter;
-    color:black;
-     font-size: 50px;
-    margin:0 0 30px;
-    word-spacing: 3px;
-}
 .text3{
     padding: 10px;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -75,13 +70,13 @@
     .right img{
         height: 200px;
     }
-    .left, .right{
+    .left{
         /* padding: 5px; */
-        justify-content: center;
-        align-items: center;
+        justify-content: space-between;
     }
     .right{
         padding-left:35px;
+        padding-top: 20px;
     }
     .wrapper{
         text-align: center;
