@@ -170,6 +170,24 @@ const Resume = React.forwardRef((props,ref) =>{
         </div>
      ),
 
+     skills: (
+      <div
+        key={"skills"}
+        className={` ${sections.skills.sectionTitle? styles.section : styles.hidden} `}
+        >
+          <div className={styles.sectionTitle}> {sections.skills.sectionTitle} </div>
+          <div className={styles.content}>
+                {sections.skills.detail?.points?.length > 0 ?
+                  <ul className={styles.points} >
+                    {sections.skills.detail?.points?.map((point)=>(
+                      <li className={styles.point}> {point} </li>
+                    ))}
+                  </ul>
+                 : ""}
+          </div>
+        </div>
+     ),
+
 
      others : (
       <div 

@@ -20,7 +20,7 @@ const Home = () =>{
             </div>
             <div className={styles.wrapper}>
             <div className={ `${styles.text3}`}>If a sheet of paper represents your entire work life, personality, and skills, it better be a pretty amazing piece of paper— </div>
-            <div className={ `${styles.text3}`}>Let <span className={styles.colored}>OutLine</span>  do the heavy lifting.</div>
+            <div className={ `${styles.text3}`}>Let <span className={styles.colored}>Karma.</span>  do the heavy lifting.</div>
             </div>
             
             <div className={styles.wrapper}>

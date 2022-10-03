@@ -42,16 +42,17 @@ const Body = () =>{
       sectionTitle : "Education",
       details : []
     },
-    // skills : {
-    //   id : "Skills",
-    //   sectionTitle : "Skills",
-    //   detail : []
-    // },
     achievement : {
       id : "Achievement",
       sectionTitle : "Achievement",
       details : []
     },
+    skills : {
+      id : "Skills",
+      sectionTitle : "Skills",
+      detail : []
+    },
+    
     summary : {
       id : "Summary",
       sectionTitle : "Professional Summary",

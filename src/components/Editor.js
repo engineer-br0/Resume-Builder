@@ -210,6 +210,30 @@ const Editor = (props) =>{
         </div>
       );
 
+      const summaryBody = (
+        <div className={styles.detail}>
+          <div className={styles.row}>
+              <InputControl
+                 label="Section Title"
+                 type="text"
+                 value = {sectionTitle || ""}
+                 onChange = {(event) =>{
+                  setSectionTitle(event.target.value);
+                 }}
+              />
+              </div>
+          <InputControl
+            label="Summary"
+            type="text"
+            value={values.summary || ""}
+            placeholder="Enter your objective/summary"
+            onChange={(event) =>
+              setValues((prev) => ({ ...prev, summary: event.target.value }))
+            }
+          />
+        </div>
+      );  
+
    const projectsBody = (
     <div className={styles.detail}>
       <div className={styles.row}>
@@ -389,29 +413,47 @@ const Editor = (props) =>{
     </div>
   );
 
-    const summaryBody = (
+  const skillsBody = (
     <div className={styles.detail}>
       <div className={styles.row}>
           <InputControl
+          type="text"
              label="Section Title"
-             type="text"
              value = {sectionTitle || ""}
              onChange = {(event) =>{
               setSectionTitle(event.target.value);
              }}
           />
           </div>
-      <InputControl
-        label="Summary"
-        type="text"
-        value={values.summary || ""}
-        placeholder="Enter your objective/summary"
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, summary: event.target.value }))
-        }
-      />
+      <div className={styles.column}>
+        <label>List your achievements</label>
+        <InputControl
+          placeholder="Line 1"
+          type="text"
+          value={values.points ? values.points[0] : ""}
+          onChange={(event) => handlePointUpdate(event.target.value, 0)}
+        />
+        <InputControl
+          placeholder="Line 2"
+          type="text"
+          value={values.points ? values.points[1] : ""}
+          onChange={(event) => handlePointUpdate(event.target.value, 1)}
+        />
+        <InputControl
+          placeholder="Line 3"
+          type="text"
+          value={values.points ? values.points[2] : ""}
+          onChange={(event) => handlePointUpdate(event.target.value, 2)}
+        />
+        <InputControl
+          placeholder="Line 4"
+          type="text"
+          value={values.points ? values.points[3] : ""}
+          onChange={(event) => handlePointUpdate(event.target.value, 3)}
+        />
+      </div>
     </div>
-  );  
+  );
 
   const othersBody = (
     <div className={styles.detail}>
@@ -441,18 +483,19 @@ const Editor = (props) =>{
      switch (activeSectionKey){
      case "basicInfo" :
      return basicInfoBody();
+     case "summary" :
+      return summaryBody;
      case "workExp" :
       return workExpBody;
      case "projects" :
       return projectsBody;
      case "education" :
       return educationBody;
-    //  case "skills" :
-    //   return skillsBody;
+      case "skills" :
+      return skillsBody;
      case "achievement" :
       return achievementsBody;
-     case "summary" :
-      return summaryBody;
+     
      case "others" :
       return othersBody;
      }
@@ -573,10 +616,25 @@ const Editor = (props) =>{
               break;
               }
 
+              case sections.skills: {
+                const tempDetail = {
+                  points: values.points,
+                };
+        
+                props.setSections((prev) => ({
+                  ...prev,
+                  skills: {
+                    ...prev[sections.skills],
+                    detail: tempDetail,
+                    sectionTitle,
+                  },
+                }));
+                console.log(sections.skills);
+                break;
+                }
+
               case sections.summary: {
                 const tempDetail =  values.summary;
-                const tempDetails = [...sections.achievement.details];
-                tempDetails[activeIndex] = tempDetail;
         
                 props.setSections((prev) => ({
                   ...prev,
