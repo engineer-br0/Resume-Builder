@@ -16,7 +16,7 @@ const Nav = (props) =>{
       
     <Link className={styles.container} to="/">
     <img src={cv} />
-    <p  className={ `${styles.tag} ${styles.colored}`}>Karma.<span className={styles.rma}>aaaaaai</span> </p>
+    <p  className={ `${styles.tag} ${styles.colored}`}>Karma.<span className={styles.rma}>aaaaaii</span> </p>
     </Link>
     <div className={styles.container2}>
     <Link to="/">
