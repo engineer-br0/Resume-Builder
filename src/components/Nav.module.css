@@ -53,7 +53,7 @@ a{
     font-size: 40px;
 }
 .rma{
-    border-top: 3px solid rgb(11, 11, 11);
+    border-top: 3px solid  #59b2e5;
     font-size: 27px;
     position: relative;
     right: 98px;
@@ -79,7 +79,7 @@ a{
         }
         .rma{
             font-size: 20px;
-            right: 73px;
+            right: 76px;
         }
         .container, .containerDark{
             padding-top: 10px;

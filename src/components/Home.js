@@ -14,7 +14,7 @@ const Home = () =>{
         
         <div className={styles.front}>
             <div  className={styles.left}> 
-            <div className={ `${styles.heading} ${styles.colored}`} style={{color:"green"}}>Fast. Easy. Effective & FREE</div>
+            <div className={ `${styles.heading} ${styles.colored}`}style={{color:"green"}} >Fast. Easy. Effective & <span style={{color:"green", fontSize:"18px"}}>FREE</span></div>
             <div className={styles.wrapper}>
             <div className={ `${styles.text}`} >The Best CV Maker Online. </div>
             </div>
