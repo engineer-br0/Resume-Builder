@@ -36,16 +36,24 @@ img{
 button{
     padding:10px;
     color:#239ce2;
-    border: 1px solid #239ce2;
+    border: 0px ;
     background-color: transparent;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
+}
+.button1{
+    color: white;
+    background-color: #239ce2;
+    border-radius: 4px;
 }
 a{
     color:#239ce2;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 19px;
     padding: 10px;
+}
+.logIn{
+    border-left: 2px solid rgb(165, 163, 163);
 }
 .tag{
     padding-left: 0%;
@@ -61,14 +69,16 @@ a{
 }
 
 .container .item:hover{
-   background-color: #239ce2;
-   color: white;
+   color: #530404;
 }
-
+.listOpen{
+    width: fit-content;
+    border-radius: 2px;
+    background-color: white;
+    position: absolute;
+    right: 0px;
+}
 .colored{
-    /* background-clip: text;
-    background-image: linear-gradient(to right,  #239ce2, #96d0f2);
-    color: transparent; */
     color: #239ce2;
     font-family:Georgia, 'Times New Roman', Times, serif
 }
@@ -82,15 +92,18 @@ a{
             right: 76px;
         }
         .container, .containerDark{
-            padding-top: 10px;
-            padding-left: 10px;
-           
-            gap: 2px;
+            padding: 10px 0 0 0px ;
         }
         .item{
             display: none;
         }
         img{
             height: 33px;
+        }
+       
+    }
+    @media screen and (min-width:820px){
+        .list, .listOpen{
+           display: none;
         }
     }

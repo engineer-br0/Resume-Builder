@@ -4,12 +4,33 @@ import { Link } from "react-router-dom";
 import cv from '../images/check.png';
 import DarkModeToggle from "react-dark-mode-toggle";
 import {DarkModeSwitch} from 'react-toggle-dark-mode';
+import lista from '../images/list.svg'
 
 const Nav = (props) =>{
    const [isDarkMode, setIsDarkMode] = useState( false);
+   const [open,setOpen] = useState(false);
    useEffect(()=>{
       props.setIsDarkMode(isDarkMode);
    },[isDarkMode])
+
+   const listOpener = (props)=>{
+    return(
+    <div className={styles.listOpen}>
+      <ul>
+        <li>
+    <Link to="/logIn" >
+      <button >Log In</button>
+     </Link>
+     </li>
+     <li>
+      <Link to="/signUp" >
+      <button >Sign Up</button>
+      </Link>
+      </li>
+      </ul>
+    </div>
+    );
+   }
    return(
     <>
     <div className={ `${isDarkMode ? styles.containerDark : styles.container}`}>
@@ -27,7 +48,6 @@ const Nav = (props) =>{
       onChange={setIsDarkMode}
       checked={isDarkMode}
       size={50}
-      style={{padding:"10px"}}
     />
     {/* <DarkModeSwitch
       className={styles.toggle}
@@ -37,13 +57,21 @@ const Nav = (props) =>{
       style={{color:"red", }}
     /> */}
 
-    <Link to="/body">
-      <button className={styles.item}>Create your CV Now</button>
+    <Link to="/logIn" >
+      <button className={ `${styles.item} ${styles.logIn}`}>Log In</button>
      </Link>
      
+      <Link to="/signUp" >
+      <button className={ `${styles.item} ${styles.button1}`}>Sign Up</button>
+      </Link>
+      
+      <img src={lista} className={styles.list} onClick={()=> open ? setOpen(false) : setOpen(true)}/>
+      
     </div>
+    
     </div>
-   
+    <div>{open ? listOpener() : ""}</div>
+    
     </>
      
    );

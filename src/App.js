@@ -5,6 +5,8 @@ import "./App.css";
 import './index.css'
 import Home from "./components/Home";
 import Nav from "./components/Nav";
+import LogIn from "./components/LogIn";
+import SignUp from "./components/SignUp";
 
 function App() {
   // const [isDarkMode, setIsDarkMode] = useState( false);
@@ -20,6 +22,8 @@ function App() {
      
      
      <Route path="/" element={<Home />} />
+     <Route path="/logIn" element={<LogIn />} /> 
+     <Route path="/signUp" element={<SignUp />} /> 
      <Route path="/body" element={<Body />} /> 
     
     </Routes>
