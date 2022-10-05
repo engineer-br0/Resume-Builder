@@ -4,12 +4,15 @@ import styles from './Home.module.css'
 import resume from '../images/resume.svg'
 import Nav from "./Nav";
 
-const Home = () =>{
-  const [isDarkMode, setIsDarkMode] = useState( false);
+const Home = (props) =>{
+  const [isDarkMode, setIsDarkMode] = useState( props.isDarkMode);
+    useEffect(() =>{
+       setIsDarkMode(props.isDarkMode);
+    },[props.isDarkMode])
   
   return(
    <>
-   <Nav setIsDarkMode={setIsDarkMode}/>
+   
     <div className={ `${isDarkMode ? styles.container2 : styles.container1}`}>
         
         <div className={styles.front}>

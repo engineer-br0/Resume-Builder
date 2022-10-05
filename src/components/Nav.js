@@ -5,32 +5,34 @@ import cv from '../images/check.png';
 import DarkModeToggle from "react-dark-mode-toggle";
 import {DarkModeSwitch} from 'react-toggle-dark-mode';
 import lista from '../images/list.svg'
+import { signOut } from "firebase/auth";
+import {auth} from '../firebase'
 
 const Nav = (props) =>{
    const [isDarkMode, setIsDarkMode] = useState( false);
-   const [open,setOpen] = useState(false);
+   const [login, setLogin] = useState(false);
+   const [user, setUser] =useState(props.user);
    useEffect(()=>{
       props.setIsDarkMode(isDarkMode);
-   },[isDarkMode])
+   },[isDarkMode]);
 
-   const listOpener = (props)=>{
-    return(
-    <div className={styles.listOpen}>
-      <ul>
-        <li>
-    <Link to="/logIn" >
-      <button >Log In</button>
-     </Link>
-     </li>
-     <li>
-      <Link to="/signUp" >
-      <button >Sign Up</button>
-      </Link>
-      </li>
-      </ul>
-    </div>
-    );
+   useEffect(()=>{
+    setLogin(props.login)
+ },[props.login])
+
+ useEffect(()=>{
+  setUser(props.user)
+},[props.user])
+
+const handleSignout = () =>{
+  
+   signOut(auth).then(()=>{
+    props.setLogin(false);
    }
+   ).catch(()=>{
+   }
+   )
+}
    return(
     <>
     <div className={ `${isDarkMode ? styles.containerDark : styles.container}`}>
@@ -57,20 +59,29 @@ const Nav = (props) =>{
       style={{color:"red", }}
     /> */}
 
-    <Link to="/logIn" >
-      <button className={ `${styles.item} ${styles.logIn}`}>Log In</button>
+    <div style={{padding:"0 7px 0 0 "}} >
+    <Link to="/logIn">
+      <button className={ ` ${styles.button1} ${login ? styles.hidden : ""}`}>Log In</button>
      </Link>
-     
-      <Link to="/signUp" >
-      <button className={ `${styles.item} ${styles.button1}`}>Sign Up</button>
-      </Link>
       
-      <img src={lista} className={styles.list} onClick={()=> open ? setOpen(false) : setOpen(true)}/>
-      
+      <div onClick={handleSignout}>
+      {console.log(user)}
+         {user ?
+           user?.photoURL 
+            ? <img src={user.photoURL} className={ ` ${login ? styles.loginImg : styles.hidden}`}/> 
+            : user?.displayName
+             ? <div className={ ` ${login ? styles.loggedin : styles.hidden}`}> {user?.displayName[0]} </div>
+             : user.email
+              ? <div className={ ` ${login ? styles.loggedin : styles.hidden}`}> {user?.email[0].toUpperCase()} </div>
+              : ""
+            : ""}
+      </div>
+      </div>
     </div>
     
     </div>
-    <div>{open ? listOpener() : ""}</div>
+    {/* <div>{open ? listOpener() : ""}</div> */}
+    
     
     </>
      

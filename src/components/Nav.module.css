@@ -42,18 +42,16 @@ button{
     cursor: pointer;
 }
 .button1{
-    color: white;
-    background-color: #239ce2;
+    color:  #59b2e5;
+    border: 1px solid  #59b2e5;
     border-radius: 4px;
+    padding: 8px 10px;
 }
 a{
     color:#239ce2;
     text-decoration: none;
     font-size: 19px;
     padding: 10px;
-}
-.logIn{
-    border-left: 2px solid rgb(165, 163, 163);
 }
 .tag{
     padding-left: 0%;
@@ -81,6 +79,29 @@ a{
 .colored{
     color: #239ce2;
     font-family:Georgia, 'Times New Roman', Times, serif
+}
+.hidden{
+    display: none;
+}
+.loggedin{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding :5px;
+    background-color: #239ce2;
+    color: white;
+    position: relative;
+    bottom: 12px;
+    margin-left: 5px;
+}.loginImg{
+    border-radius: 50%;
+    position: relative;
+    bottom: 12px;
+    margin-left: 5px;
 }
 
     @media screen and (max-width:820px){
