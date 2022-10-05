@@ -106,6 +106,7 @@ a{
 
     @media screen and (max-width:820px){
         .tag{
+            
             font-size: 30px;
         }
         .rma{
@@ -113,12 +114,14 @@ a{
             right: 76px;
         }
         .container, .containerDark{
+            
             padding: 10px 0 0 0px ;
         }
         .item{
             display: none;
         }
         img{
+            padding-left: 20px;
             height: 33px;
         }
        

@@ -37,7 +37,7 @@
     background-color: #239ce2;
     border-radius: 2px;
 }
-input{
+.container input{
     width: 300px;
     height: 10px;
 }
