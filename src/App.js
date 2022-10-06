@@ -8,7 +8,7 @@ import Nav from "./components/Nav";
 import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import { db } from "./firebase";
-import { collection, doc, addDoc, setDoc, getDoc } from "firebase/firestore"; 
+import { query, collection, doc, addDoc, setDoc, getDoc, orderBy } from "firebase/firestore"; 
 
 
 function App() {
@@ -62,16 +62,8 @@ function App() {
     
     if(login){
        // Add a new document in collection "cities"
-         setDoc(doc(db, "users", `${user.email}`), sections);
-       // setDoc(doc(db, "users", `${user.email}`, "workExp"), sections.workExp );
-      //  setDoc(doc(db, "users", `${user.email}`, "projects"), sections.projects );
-      //  setDoc(doc(db, "users", `${user.email}`, "education"), sections.education );
-      //  setDoc(doc(db, "users", `${user.email}`, "achievement"), sections.achievement );
-      //  setDoc(doc(db, "users", `${user.email}`, "skills"), sections.skills );
-      //  setDoc(doc(db, "users", `${user.email}`, "summary"), sections.summary );
-      //  setDoc(doc(db, "users", `${user.email}`, "others"), sections.others );
-      
-      console.log("created by login");
+         const docRef = doc(db, "users", `${user.email}`);
+         setDoc(docRef , sections);
     }
   },[sections])
   

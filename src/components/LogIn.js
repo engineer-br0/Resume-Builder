@@ -7,7 +7,7 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import {auth, db} from '../firebase'
 import G from '../images/g.svg'
 import { useLocation } from "react-router-dom";
-import { collection, doc, addDoc, setDoc, getDoc } from "firebase/firestore"; 
+import { query, orderBy, collection, doc, addDoc, setDoc, getDoc } from "firebase/firestore"; 
 
 const LogIn = (props) =>{
     const [isDarkMode, setIsDarkMode] = useState( props.isDarkMode);
@@ -18,6 +18,20 @@ const LogIn = (props) =>{
         email : "",
         pass : ""
     })
+
+    const retrieveFromDatabase = (data) =>{
+        props.setSections((prev) =>({
+            ...prev,
+            basicInfo : data.basicInfo,
+            workExp : data.workExp,
+            projects : data.projects,
+            education : data.education,
+            skills : data.skills,
+            summary : data.summary,
+            achievement : data.achievement,
+            others : data.others
+          }));
+    }
     
     const handleSubmission = async(e) =>{
         e.preventDefault();
@@ -28,14 +42,13 @@ const LogIn = (props) =>{
                 props.setUser(res.user);
                 props.setLogin(true);
 
-                const docRef = doc(db, "users", `${res.user.email}`, "basicInfo", "detail");
+                const docRef = doc(db, "users", `${res.user.email}`);
                 const docSnap = await getDoc(docRef);
-
-                if (docSnap.exists) {
-                //console.log("Document data:", docSnap.data());
-                //props.setSections(docSnap);
+                if (docSnap.exists()) {
+                  console.log("Document data:", docSnap.data());
+                  props.setSections(docSnap.data());
+                  retrieveFromDatabase(docSnap.data());
                 } else {
-                // doc.data() will be undefined in this case
                 console.log("No such document!");
                 }
         }
@@ -56,20 +69,32 @@ const LogIn = (props) =>{
         //     }
         // )
     }
-    const handleSubmissionGoogle = () =>{
+    const handleSubmissionGoogle = async(e) =>{
+        e.preventDefault();
         //google sign in
         const provider = new GoogleAuthProvider;
-        signInWithPopup(auth, provider).then(
-            (res) =>{
+        try{
+        const res = await signInWithPopup(auth, provider);
                 props.setUser(res.user);
                 console.log(res.user);
                 props.setLogin(true);
-            }
-        ).catch(
-            (err) =>{
+
+                const docRef = doc(db, "users", `${res.user.email}`);
+                //const q = query(docRef, orderBy("date"));
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    const data = docSnap.data();
+                  console.log("Document data:", data);
+                  retrieveFromDatabase(data);
+                  
+                } else {
+                console.log("No such document!");
+                }
+        }
+        catch(err){
                 console.log(err);
             }
-        )
+        
     }
 
     return(

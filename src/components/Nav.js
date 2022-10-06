@@ -65,7 +65,6 @@ const handleSignout = () =>{
      </Link>
       
       <div onClick={handleSignout}>
-      {console.log(user)}
          {user ?
            user?.photoURL 
             ? <img src={user.photoURL} className={ ` ${login ? styles.loginImg : styles.hidden}`}/> 
