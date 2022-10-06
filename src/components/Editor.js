@@ -63,7 +63,7 @@ const Editor = (props) =>{
           label="LinkedIn Profile Link"
           type="text"
           value = {values.linkedIn || ""}
-          placeholder = "Enter your linkedin profile link"
+          placeholder = "Enter your linkedIn profile link"
           onChange = {(event) => {
             setValues((prev)=>(
               {...prev, linkedIn: event.target.value}
@@ -734,7 +734,7 @@ const Editor = (props) =>{
         : activeInfo?.points
           ? [...activeInfo.points]
           : "",
-      linkedin: activeInfo?.detail?.linkedin || "",
+      linkedIn: activeInfo?.detail?.linkedIn || "",
       github: activeInfo?.details
         ? activeInfo.details[0]?.github || ""
         : activeInfo?.detail?.github || "",
@@ -759,7 +759,7 @@ const Editor = (props) =>{
         startDate: activeInfo.details[activeIndex]?.startDate || "",
         endDate: activeInfo.details[activeIndex]?.endDate || "",
         points: activeInfo.details[activeIndex]?.points || "",
-        linkedin: activeInfo.details[activeIndex]?.linkedin || "",
+        linkedIn: activeInfo.details[activeIndex]?.linkedIn || "",
         github: activeInfo.details[activeIndex]?.github || "",
         college: activeInfo.details[activeIndex]?.college || "",
       }

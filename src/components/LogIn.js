@@ -4,9 +4,10 @@ import InputControl from "./InputControl";
 import Nav from "./Nav";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import {auth} from '../firebase'
+import {auth, db} from '../firebase'
 import G from '../images/g.svg'
 import { useLocation } from "react-router-dom";
+import { collection, doc, addDoc, setDoc, getDoc } from "firebase/firestore"; 
 
 const LogIn = (props) =>{
     const [isDarkMode, setIsDarkMode] = useState( props.isDarkMode);
@@ -18,20 +19,42 @@ const LogIn = (props) =>{
         pass : ""
     })
     
-    const handleSubmission = () =>{
-       
-        signInWithEmailAndPassword(auth, values.email, values.pass).then(
-            (res) =>{
-                //props.setUser(res.user);
-                console.log("login",res.user);
+    const handleSubmission = async(e) =>{
+        e.preventDefault();
+
+        try{
+            const res = await signInWithEmailAndPassword(auth, values.email, values.pass);
+               console.log(res.user);
                 props.setUser(res.user);
                 props.setLogin(true);
-            }
-        ).catch(
-            (err)=>{
-                console.log(err);
-            }
-        )
+
+                const docRef = doc(db, "users", `${res.user.email}`, "basicInfo", "detail");
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists) {
+                //console.log("Document data:", docSnap.data());
+                //props.setSections(docSnap);
+                } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+                }
+        }
+        catch(err){
+            console.log(err);
+        }
+       
+        // signInWithEmailAndPassword(auth, values.email, values.pass).then(
+        //     (res) =>{
+        //         //props.setUser(res.user);
+        //         console.log("login",res.user);
+        //         props.setUser(res.user);
+        //         props.setLogin(true);
+        //     }
+        // ).catch(
+        //     (err)=>{
+        //         console.log(err);
+        //     }
+        // )
     }
     const handleSubmissionGoogle = () =>{
         //google sign in

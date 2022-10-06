@@ -23,49 +23,7 @@ const Body = (props) =>{
   const [activeColor, setActiveColor] = useState(colors[0]);
   const resumeRef = useRef();
   const containerRef = useRef();
-  const [sections,setSections] = useState({
-    basicInfo : {
-      id : "Basic Info",
-      sectionTitle : "Basic Info",
-      detail : {}
-    },
-    workExp : {
-      id : "Work Experiance",
-      sectionTitle : "Work Experiance",
-      details : []
-    },
-    projects : {
-      id : "Projects",
-      sectionTitle : "Projects",
-      details : []
-    },
-    education : {
-      id : "Education",
-      sectionTitle : "Education",
-      details : []
-    },
-    achievement : {
-      id : "Achievement",
-      sectionTitle : "Achievement",
-      details : []
-    },
-    skills : {
-      id : "Skills",
-      sectionTitle : "Skills",
-      detail : []
-    },
-    
-    summary : {
-      id : "Summary",
-      sectionTitle : "Professional Summary",
-      detail : ""
-    },
-    others : {
-      id : "Others",
-      sectionTitle : "Others",
-      detail : ""
-    }
-  });
+
 
   useEffect(()=>{
     const colorRef = containerRef.current;
@@ -107,14 +65,14 @@ const Body = (props) =>{
       <div className={style.main}>
       <div className={style.left}>
       <Editor  
-                sections={sections}
-                setSections = {setSections}
+                sections={props.sections}
+                setSections = {props.setSections}
                 activeColor = {activeColor}
       />
       </div>
       <div className={style.right}>
       <Resume 
-       sections = {sections}
+       sections = {props.sections}
        activeColor = {activeColor}
        ref = {resumeRef}
       />
