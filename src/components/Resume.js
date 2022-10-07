@@ -224,10 +224,10 @@ const Resume = React.forwardRef((props,ref) =>{
             {sections.basicInfo.detail.title}
           </div>
           <div className={styles.links}>
-            <a className={styles.link}> <Linkedin/> {sections.basicInfo.detail.linkedIn}</a>
-            <a className={styles.link}> <GitHub/> {sections.basicInfo.detail.github}</a>
-            <a className={styles.link}> <AtSign/> {sections.basicInfo.detail.email}</a>
-            <a className={styles.link}> <Phone/> {sections.basicInfo.detail.phone}</a>
+          {sections.basicInfo.detail.linkedIn &&<a className={styles.link}> <Linkedin/> {sections.basicInfo.detail.linkedIn}</a> }
+          {sections.basicInfo.detail.github && <a className={styles.link}> <GitHub/> {sections.basicInfo.detail.github}</a> }
+          {sections.basicInfo.detail.email && <a className={styles.link}> <AtSign/> {sections.basicInfo.detail.email}</a> }
+          {sections.basicInfo.detail.phone && <a className={styles.link}> <Phone/> {sections.basicInfo.detail.phone}</a> }
           </div>
         </div>
 
