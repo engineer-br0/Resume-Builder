@@ -22,8 +22,8 @@ function App() {
       detail : {},
     },
     workExp : {
-      id : "Work Experiance",
-      sectionTitle : "Work Experiance",
+      id : "Work Experience",
+      sectionTitle : "Work Experience",
       details : []
     },
     projects : {
