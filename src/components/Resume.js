@@ -6,7 +6,7 @@ const Resume = React.forwardRef((props,ref) =>{
   const sections = props.sections;
   const getFormattedDate = (value) =>{
     let date = new Date(value);
-    return `${date.getDate()} / ${date.getMonth() + 1} / ${date.getFullYear()}`;
+    return ` ${date.getMonth() + 1} / ${date.getFullYear()}`;
   }
 
   const sectionDiv = {
@@ -34,13 +34,12 @@ const Resume = React.forwardRef((props,ref) =>{
         {sections.workExp.details?.map((item) =>(
           <div key={item?.title} className={styles.item}>  
           <div className={styles.sectionKeAndar}>
-          <div className={styles.sectionKeAndar}>
+          <div >
             {item?.title ?
-             <p className={styles.title}> {(item.title)} </p>
+              item?.companyName ? <p className={styles.title}> {(item.title) + " " + "@" + (item.companyName)}</p>
+              : ""
              : ""}  
-             {item?.companyName ?
-              <p className={styles.subTitle}> {" , " + item.companyName}</p>
-              : ""}
+            
              </div>
              {item?.startDate && item.endDate ?
                  <div className={styles.date}>

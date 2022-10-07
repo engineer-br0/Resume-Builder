@@ -169,7 +169,7 @@ const Editor = (props) =>{
           <div className={styles.row}>
             <InputControl
               label="Start Date"
-              type="date"
+              type="month"
               placeholder="Enter start date of work"
               value={values.startDate || ""}
               onChange={(event) =>
@@ -178,7 +178,7 @@ const Editor = (props) =>{
             />
             <InputControl
               label="End Date"
-              type="date"
+              type="month"
               placeholder="Enter end date of work"
               value={values.endDate || ""}
               onChange={(event) =>
@@ -351,7 +351,7 @@ const Editor = (props) =>{
           <div className={styles.row}>
             <InputControl
               label="Start Date"
-              type="date"
+              type="month"
               placeholder="Enter start date of this education"
               value={values.startDate || ""}
               onChange={(event) =>
@@ -360,7 +360,7 @@ const Editor = (props) =>{
             />
             <InputControl
               label="End Date"
-              type="date"
+              type="month"
               placeholder="Enter end date of this education"
               value={values.endDate || ""}
               onChange={(event) =>
