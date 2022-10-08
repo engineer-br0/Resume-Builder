@@ -533,7 +533,7 @@ const Editor = (props) =>{
             sectionTitle,
           },
         }));
-          console.log(sections.basicInfo);
+          //console.log(sections.basicInfo);
           break;
         }
 
@@ -558,7 +558,7 @@ const Editor = (props) =>{
             sectionTitle,
           },
         }));
-        console.log(sections.workExp);
+        //console.log(sections.workExp);
         break;
         }
 
@@ -583,7 +583,7 @@ const Editor = (props) =>{
               sectionTitle,
             },
           }));
-          console.log(sections.projects);
+          //console.log(sections.projects);
           break;
           }
 
@@ -605,7 +605,7 @@ const Editor = (props) =>{
                 sectionTitle,
               },
             }));
-            console.log(sections.education);
+            //console.log(sections.education);
             break;
             }
 
@@ -624,7 +624,7 @@ const Editor = (props) =>{
                   sectionTitle,
                 },
               }));
-              console.log(sections.achievement);
+              //console.log(sections.achievement);
               break;
               }
 
@@ -641,7 +641,7 @@ const Editor = (props) =>{
                     sectionTitle,
                   },
                 }));
-                console.log(sections.skills);
+                //console.log(sections.skills);
                 break;
                 }
 
@@ -656,7 +656,7 @@ const Editor = (props) =>{
                     sectionTitle,
                   },
                 }));
-                console.log(sections.summary);
+                //console.log(sections.summary);
                 break;
                 }
 

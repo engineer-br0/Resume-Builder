@@ -101,6 +101,7 @@ a{
     border-radius: 50%;
     position: relative;
     bottom: 12px;
+    padding: 0;
     margin-left: 5px;
 }
 
@@ -124,6 +125,7 @@ a{
             padding-left: 20px;
             height: 33px;
         }
+        
        
     }
     @media screen and (min-width:820px){

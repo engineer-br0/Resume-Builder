@@ -7,6 +7,7 @@ import {auth} from '../firebase'
 
 const SignUp = (props) =>{
         const [isDarkMode, setIsDarkMode] = useState( false);
+        const [errorMes, setErrorMes] = useState("");
         useEffect(() =>{
             setIsDarkMode(props.isDarkMode);
          },[props.isDarkMode])
@@ -16,14 +17,16 @@ const SignUp = (props) =>{
         })
 
         const handleSubmission =() =>{
-            console.log(values);
+            //console.log(values);
             createUserWithEmailAndPassword(auth, values.email, values.pass).then(
                 (res) =>{
-                    console.log(res)
+                    //console.log(res)
+                    setErrorMes("SignUp successfully!");
                 }
             ).catch(
                 (err)=>{
-                    console.log(err);
+                    //console.log(err);
+                    setErrorMes(err.message);
                 }
             )
         }
@@ -57,7 +60,10 @@ const SignUp = (props) =>{
                     setValues((prev) => ({...prev, pass:event.target.value}))
                   }}
                   />
-                  <p>don't have account<a href='/logIn'>Log In</a></p>
+                  <p>don't have account<a href='/logIn'>Login</a></p>
+                  {errorMes==="SignUp successfully!" 
+                     ? <p style={{color:"green"}}>{errorMes} <a href='/logIn'>Login Now</a></p>
+                     : <p style={{color:"red"}}>{errorMes}</p> }
                   <div className={styles.container} style={{width:"100%", height:"fit-content"}}>
               <button onClick={handleSubmission}>Continue</button>
               </div>

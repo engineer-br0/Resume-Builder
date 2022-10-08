@@ -11,6 +11,7 @@ import { query, orderBy, collection, doc, addDoc, setDoc, getDoc } from "firebas
 
 const LogIn = (props) =>{
     const [isDarkMode, setIsDarkMode] = useState( props.isDarkMode);
+    const [errorMes, setErrorMes] = useState("");
     useEffect(() =>{
        setIsDarkMode(props.isDarkMode);
     },[props.isDarkMode])
@@ -38,14 +39,14 @@ const LogIn = (props) =>{
 
         try{
             const res = await signInWithEmailAndPassword(auth, values.email, values.pass);
-               console.log(res.user);
+               //console.log(res.user);
                 props.setUser(res.user);
                 props.setLogin(true);
-
+                setErrorMes("Login successfully!")
                 const docRef = doc(db, "users", `${res.user.email}`);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
-                  console.log("Document data:", docSnap.data());
+                  //console.log("Document data:", docSnap.data());
                   props.setSections(docSnap.data());
                   retrieveFromDatabase(docSnap.data());
                 } else {
@@ -53,7 +54,8 @@ const LogIn = (props) =>{
                 }
         }
         catch(err){
-            console.log(err);
+            console.log(err.message);
+            setErrorMes(err.message);
         }
        
         // signInWithEmailAndPassword(auth, values.email, values.pass).then(
@@ -76,15 +78,15 @@ const LogIn = (props) =>{
         try{
         const res = await signInWithPopup(auth, provider);
                 props.setUser(res.user);
-                console.log(res.user);
+                //console.log(res.user);
                 props.setLogin(true);
-
+                setErrorMes("Login successfully!")
                 const docRef = doc(db, "users", `${res.user.email}`);
                 //const q = query(docRef, orderBy("date"));
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     const data = docSnap.data();
-                  console.log("Document data:", data);
+                 // console.log("Document data:", data);
                   retrieveFromDatabase(data);
                   
                 } else {
@@ -92,7 +94,8 @@ const LogIn = (props) =>{
                 }
         }
         catch(err){
-                console.log(err);
+                //console.log(err);
+                setErrorMes(err.message);
             }
         
     }
@@ -120,7 +123,10 @@ const LogIn = (props) =>{
               }}
               />
               <p>don't have account<a href='/signUp'>Sign Up</a></p>
+              <p style={errorMes==="Login successfully!" ? {color:"green"} : {color:"red"}}>{errorMes}</p>
               <div className={styles.container} style={{width:"100%", height:"fit-content"}}>
+              
+              
               <button onClick={handleSubmission}>Continue</button>
               <br></br>
               <div>-------OR--------</div>
