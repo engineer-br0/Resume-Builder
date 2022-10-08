@@ -42,7 +42,7 @@ const LogIn = (props) =>{
                //console.log(res.user);
                 props.setUser(res.user);
                 props.setLogin(true);
-                setErrorMes("Login successfully!")
+                setErrorMes("Login successfully!");
                 const docRef = doc(db, "users", `${res.user.email}`);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
@@ -54,7 +54,7 @@ const LogIn = (props) =>{
                 }
         }
         catch(err){
-            console.log(err.message);
+           // console.log(err.message);
             setErrorMes(err.message);
         }
        
