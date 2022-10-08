@@ -54,6 +54,7 @@ const Body = (props) =>{
 
         <ReactToPrint
         pageStyle="@page{size : A4 ;}"
+        
         trigger = {()=> 
           <button>
            Download <ArrowDown/>

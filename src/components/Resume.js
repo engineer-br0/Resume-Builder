@@ -18,7 +18,7 @@ const Resume = React.forwardRef((props,ref) =>{
         <div className={styles.sectionTitle}> {sections.summary.sectionTitle} </div>
         <div className={styles.content}>
           <div className={styles.item}>
-            <p className={styles.overview}> {sections.summary?.detail}  </p>
+            <p className={styles.title}> {sections.summary?.detail}  </p>
           </div>
         </div>
       </div>
@@ -223,9 +223,10 @@ const Resume = React.forwardRef((props,ref) =>{
           <div className={styles.subHeading}>
             {sections.basicInfo.detail.title}
           </div>
-          <div className={styles.locationInfo}>
-            <MapPin/>{sections.basicInfo.detail.location}
-          </div>
+          {sections.basicInfo.detail.location && 
+            <div className={styles.locationInfo}>
+             <MapPin/>{sections.basicInfo.detail.location} 
+            </div> }
           <br></br>
           <div className={styles.links}>
           {sections.basicInfo.detail.linkedIn &&<a href={sections.basicInfo.detail.linkedIn} className={styles.link}> <Linkedin/> {sections.basicInfo.detail.linkedIn}</a> }
