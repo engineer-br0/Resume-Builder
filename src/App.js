@@ -21,6 +21,11 @@ function App() {
       sectionTitle : "Basic Info",
       detail : {},
     },
+    summary : {
+      id : "Summary",
+      sectionTitle : "Professional Summary",
+      detail : ""
+    },
     workExp : {
       id : "Work Experience",
       sectionTitle : "Work Experience",
@@ -47,11 +52,6 @@ function App() {
       detail : []
     },
     
-    summary : {
-      id : "Summary",
-      sectionTitle : "Professional Summary",
-      detail : ""
-    },
     others : {
       id : "Others",
       sectionTitle : "Others",

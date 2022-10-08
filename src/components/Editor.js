@@ -59,6 +59,17 @@ const Editor = (props) =>{
           />
         </div>
         <div className={styles.row}>
+        <InputControl
+              label="Location"
+              type="text"
+              placeholder="Enter location eg. Remote"
+              value={values.location || ""}
+              onChange={(event) =>
+                setValues((prev) => ({ ...prev, location: event.target.value }))
+              }
+            />
+        </div>
+        <div className={styles.row}>
           <InputControl 
           label="LinkedIn Profile Link"
           type="text"
@@ -507,6 +518,7 @@ const Editor = (props) =>{
         const tempDetail = {
           name: values.name,
           title: values.title,
+          location: values.location,
           linkedIn: values.linkedIn,
           github: values.github,
           email: values.email,
@@ -722,7 +734,9 @@ const Editor = (props) =>{
         : "",
       location: activeInfo?.details
         ? activeInfo.details[0]?.location || ""
-        : "",
+        : activeInfo?.detail
+          ? activeInfo.detail?.location || ""
+          : "",
       startDate: activeInfo?.details
         ? activeInfo.details[0]?.startDate || ""
         : "",
@@ -745,7 +759,7 @@ const Editor = (props) =>{
     })
   },[activeSectionKey]);
 
-  useEffect(()=>{
+  useEffect(()=>{  //important for chips
     const activeInfo = sections[activeSectionKey];
     if(activeInfo.details)
     setValues(
