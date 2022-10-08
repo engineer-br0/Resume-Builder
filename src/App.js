@@ -19,7 +19,13 @@ function App() {
     basicInfo : {
       id : "Basic Info",
       sectionTitle : "Basic Info",
-      detail : {},
+      detail : {
+        //important for solving 32,108 and 29,108 pages issue
+        name: "Any Name",
+        title: "Title",
+        email: "abc@gmail.com"
+
+      },
     },
     summary : {
       id : "Summary",

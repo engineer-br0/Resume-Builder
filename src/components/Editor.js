@@ -804,7 +804,7 @@ const Editor = (props) =>{
        </div>
 
        <div className={styles.body} >
-
+<div className={styles.hint}>You can change all the details...</div>
         <div className={styles.chips}>
           {/* {activeInformation?.details  */}
           {sections[activeSectionKey]?.details

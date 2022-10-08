@@ -216,7 +216,7 @@ const Resume = React.forwardRef((props,ref) =>{
     <>
     <div ref={ref}>
       <div  ref={containerRef} className={styles.container}>
-        <div className={styles.header}>
+        <div  className={styles.header}>
           <div className={styles.heading}>
             {sections.basicInfo.detail.name}
           </div>
@@ -228,15 +228,15 @@ const Resume = React.forwardRef((props,ref) =>{
              <MapPin/>{sections.basicInfo.detail.location} 
             </div> }
           <br></br>
-          <div className={styles.links}>
-          {sections.basicInfo.detail.linkedIn &&<a href={sections.basicInfo.detail.linkedIn} className={styles.link}> <Linkedin/> {sections.basicInfo.detail.linkedIn}</a> }
-          {sections.basicInfo.detail.github && <a href={`${sections.basicInfo.detail.github} `}className={styles.link}> <GitHub/> {sections.basicInfo.detail.github}</a> }
+          <div  className={styles.links}>
+          {sections.basicInfo.detail.linkedIn &&<a  href={`${sections.basicInfo.detail.linkedIn}`} className={styles.link}> <Linkedin/> {sections.basicInfo.detail.linkedIn}</a> }
+          {sections.basicInfo.detail.github && <a href={`${sections.basicInfo.detail.github}`}className={styles.link}> <GitHub/> {sections.basicInfo.detail.github}</a> }
           {sections.basicInfo.detail.email && <a href={`mailto:${sections.basicInfo.detail.email}`} className={styles.link}> <AtSign/> {sections.basicInfo.detail.email}</a> }
           {sections.basicInfo.detail.phone && <a href={`tel:${sections.basicInfo.detail.phone}`} className={styles.link}> <Phone/> {sections.basicInfo.detail.phone}</a> }
           </div>
         </div>
 
-        <div className={styles.main} >
+        <div  className={styles.main} >
           {Object.keys(sectionDiv).map((key) =>(
             <div key={key} >
               {sectionDiv[key]}
