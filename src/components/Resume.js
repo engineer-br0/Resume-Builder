@@ -194,11 +194,19 @@ const Resume = React.forwardRef((props,ref) =>{
         className={` ${sections.others.sectionTitle? styles.section : styles.hidden} `}
         >
         <div className={styles.sectionTitle}> {sections.others.sectionTitle} </div>
-        <div className={styles.content}>
-          <div className={styles.item}>
-            <p className={styles.overview}> {sections.others?.detail} </p>
+          <div className={styles.content}>
+            {sections.others.details?.map((item,index)=>(
+              <div key={item?.title} className={styles.item} >
+                {item?.points?.length > 0 ?
+                  <ul className={styles.points} >
+                    {item?.points?.map((point, index2)=>(
+                      <li  className={styles.point}> {point} </li>
+                    ))}
+                  </ul>
+                 : ""}
+              </div>
+            ))}
           </div>
-        </div>
       </div>
      ),
 

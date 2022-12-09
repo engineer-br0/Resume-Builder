@@ -63,7 +63,7 @@ function App() {
     others : {
       id : "Others",
       sectionTitle : "Others",
-      detail : ""
+      details : []
     }
   });
   useEffect(() => {

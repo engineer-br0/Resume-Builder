@@ -468,26 +468,44 @@ const Editor = (props) =>{
 
   const othersBody = (
     <div className={styles.detail}>
-      <div className={styles.row}>
-          <InputControl
-             label="Section Title"
-             type="text"
-             value = {sectionTitle || ""}
-             onChange = {(event) =>{
-              setSectionTitle(event.target.value);
-             }}
-          />
-          </div>
-      <InputControl
-        label="Other"
+    <div className={styles.row}>
+        <InputControl
         type="text"
-        value={values.others || ""}
-        placeholder="Enter something"
-        onChange={(event) =>
-          setValues((prev) => ({ ...prev, others: event.target.value }))
-        }
+           label="Section Title"
+           value = {sectionTitle || ""}
+           onChange = {(event) =>{
+            setSectionTitle(event.target.value);
+           }}
+        />
+        </div>
+    <div className={styles.column}>
+      <label>Others : </label>
+      <InputControl
+        placeholder="Line 1"
+        type="text"
+        value={values.points ? values.points[0] : ""}
+        onChange={(event) => handlePointUpdate(event.target.value, 0)}
+      />
+      <InputControl
+        placeholder="Line 2"
+        type="text"
+        value={values.points ? values.points[1] : ""}
+        onChange={(event) => handlePointUpdate(event.target.value, 1)}
+      />
+      <InputControl
+        placeholder="Line 3"
+        type="text"
+        value={values.points ? values.points[2] : ""}
+        onChange={(event) => handlePointUpdate(event.target.value, 2)}
+      />
+      <InputControl
+        placeholder="Line 4"
+        type="text"
+        value={values.points ? values.points[3] : ""}
+        onChange={(event) => handlePointUpdate(event.target.value, 3)}
       />
     </div>
+  </div>
   );
 
    const generateBody = () => {
@@ -661,18 +679,21 @@ const Editor = (props) =>{
                 }
 
                 case sections.others: {
-                  const tempDetail =  values.others;
-                  const tempDetails = [...sections.achievement.details];
+                  const tempDetail = {
+                    points: values.points,
+                  };
+                  const tempDetails = [...sections.others.details];
                   tempDetails[activeIndex] = tempDetail;
-
+          
                   props.setSections((prev) => ({
                     ...prev,
                     others: {
                       ...prev[sections.others],
-                      detail: tempDetail,
+                      details: tempDetails,
                       sectionTitle,
                     },
                   }));
+                  //console.log(sections.achievement);
                   break;
                   }
     }
