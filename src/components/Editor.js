@@ -18,8 +18,13 @@ const Editor = (props) =>{
     // github : sections[activeSectionKey]?.detail?.github || "",
     // email : sections[activeSectionKey]?.detail?.email || "",
     // phone : sections[activeSectionKey]?.detail?.phone || "",
+    deployedLink : "",
     points : []
-   })
+   });
+
+  //  useEffect(()=>{
+  //   setValues({...values, deployedLink: values.deployedLink})
+  //  }, [counter])
 
 
    const handlePointUpdate = (data, key) => {
@@ -283,17 +288,25 @@ const Editor = (props) =>{
           type="text"
           value={values.deployedLink || ""}
           placeholder="Enter deployed link of project"
-          onChange={(event) =>
-            setValues((prev) => ({ ...prev, deployedLink: event.target.value }))
+          onChange={(event) =>{
+            // setCounter(counter + 1);
+            setValues((prev) => ({ ...prev, deployedLink: event.target.value }));
+
+            console.log(values);
+          }
           }
         />
+
         <InputControl
           label="Github Link"
           type="text"
           value={values.github || ""}
           placeholder="Enter github link of project"
-          onChange={(event) =>
+          onChange={(event) =>{
             setValues((prev) => ({ ...prev, github: event.target.value }))
+            setValues((prev) => ({ ...prev, github: event.target.value }))
+            console.log(values);
+          }
           }
         />
       </div>
@@ -586,7 +599,7 @@ const Editor = (props) =>{
             overview :values.overview,
             startDate: values.startDate,
             endDate: values.endDate,
-            deployedLink : values.deployedLink,
+            deployedLink : values.deployedLink || "",
             github : values.github,
             points: values.points,
           };

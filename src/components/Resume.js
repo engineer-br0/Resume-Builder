@@ -92,9 +92,11 @@ const Resume = React.forwardRef((props,ref) =>{
               <p className={styles.date}> {item.overview}</p>
               : ""}
 <div className={styles.sectionKeAndarLinks}>
-              {item?.deployedLink ?
+              {/* {item?.deployedLink ?
+              <p className={styles.date}>
                <a className={styles.link}> {item.deployedLink}</a>
-               : ""}
+               </p>
+               : ""} */}
                
                {item?.github ?
               <p className={styles.date}>
