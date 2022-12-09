@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import styles from './Home.module.css'
 import resume from '../images/resume.svg'
 import Nav from "./Nav";
+import { useSelector } from "react-redux";
 
 const Home = (props) =>{
-  const [isDarkMode, setIsDarkMode] = useState( props.isDarkMode);
-    useEffect(() =>{
-       setIsDarkMode(props.isDarkMode);
-    },[props.isDarkMode])
+  //const [isDarkMode, setIsDarkMode] = useState( props.isDarkMode);
+  const {isDarkMode} = useSelector(state => state.custom);
+    // useEffect(() =>{
+    //    setIsDarkMode(props.isDarkMode);
+    // },[props.isDarkMode])
   
   return(
    <>

@@ -8,13 +8,15 @@ import {auth, db} from '../firebase'
 import G from '../images/g.svg'
 import { useLocation } from "react-router-dom";
 import { query, orderBy, collection, doc, addDoc, setDoc, getDoc } from "firebase/firestore"; 
+import { useSelector } from "react-redux";
 
 const LogIn = (props) =>{
-    const [isDarkMode, setIsDarkMode] = useState( props.isDarkMode);
+    //const [isDarkMode, setIsDarkMode] = useState( props.isDarkMode);
+    const {isDarkMode} = useSelector(state => state.custom);
     const [errorMes, setErrorMes] = useState("");
-    useEffect(() =>{
-       setIsDarkMode(props.isDarkMode);
-    },[props.isDarkMode])
+    // useEffect(() =>{
+    //    setIsDarkMode(props.isDarkMode);
+    // },[props.isDarkMode])
     const [values, setValues] = useState({
         email : "",
         pass : ""

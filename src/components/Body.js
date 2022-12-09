@@ -6,6 +6,7 @@ import Editor from "./Editor"
 import Resume from "./Resume";
 import style from './Body.module.css'
 import Nav from "./Nav";
+import { useSelector } from "react-redux";
 
 // const Temp = React.forwardRef((props,ref)=>(
 //   <div ref={ref}>
@@ -14,10 +15,11 @@ import Nav from "./Nav";
 // ))
 
 const Body = (props) =>{
-  const [isDarkMode, setIsDarkMode] = useState( false);
-  useEffect(() =>{
-    setIsDarkMode(props.isDarkMode);
- },[props.isDarkMode])
+  //const [isDarkMode, setIsDarkMode] = useState( false);
+  const {isDarkMode} = useSelector(state => state.custom);
+//   useEffect(() =>{
+//     setIsDarkMode(props.isDarkMode);
+//  },[props.isDarkMode])
   
   const colors = ["#239ce2", "#48bb78", "#0bc5ea", "#a0aec0", "#ed8936"];
   const [activeColor, setActiveColor] = useState(colors[0]);

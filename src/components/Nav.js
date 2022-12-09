@@ -7,14 +7,23 @@ import {DarkModeSwitch} from 'react-toggle-dark-mode';
 import lista from '../images/list.svg'
 import { signOut } from "firebase/auth";
 import {auth} from '../firebase'
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const Nav = (props) =>{
-   const [isDarkMode, setIsDarkMode] = useState( false);
+  const dispatch = useDispatch();
+   //const [isDarkMode, setIsDarkMode] = useState( false);
+   const {isDarkMode} = useSelector(state => state.custom);
+   const setIsDarkMode = () =>{
+    dispatch({
+      type : "setIsDarkMode"
+    })
+   }
    const [login, setLogin] = useState(false);
    const [user, setUser] =useState(props.user);
-   useEffect(()=>{
-      props.setIsDarkMode(isDarkMode);
-   },[isDarkMode]);
+  //  useEffect(()=>{
+  //     props.setIsDarkMode(isDarkMode);
+  //  },[isDarkMode]);
 
    useEffect(()=>{
     setLogin(props.login)

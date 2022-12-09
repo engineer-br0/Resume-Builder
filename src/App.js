@@ -9,10 +9,12 @@ import LogIn from "./components/LogIn";
 import SignUp from "./components/SignUp";
 import { db } from "./firebase";
 import { query, collection, doc, addDoc, setDoc, getDoc, orderBy } from "firebase/firestore"; 
+import { useSelector } from "react-redux";
 
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState( false);
+  //const [isDarkMode, setIsDarkMode] = useState( false);
+  const {isDarkMode} = useSelector(state => state.custom);
   const [login, setLogin] = useState(false);
   const [user, setUser] =useState("usera");
   const [sections,setSections] = useState({
@@ -79,12 +81,12 @@ function App() {
     <div className="App">
       
     <BrowserRouter>
-    <Nav isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} login={login} setLogin={setLogin} user={user}/>
+    <Nav  login={login} setLogin={setLogin} user={user}/>
      <Routes>
-     <Route path="/" element={<Home isDarkMode={isDarkMode}/>} />
-     <Route path="/logIn" element={<LogIn isDarkMode={isDarkMode} setLogin={setLogin} setUser={setUser} setSections={setSections}/>} /> 
-     <Route path="/signUp" element={<SignUp isDarkMode={isDarkMode}/>} /> 
-     <Route path="/body" element={<Body isDarkMode={isDarkMode} login={login} sections={sections} setSections={setSections}/>} /> 
+     <Route path="/" element={<Home />} />
+     <Route path="/logIn" element={<LogIn setLogin={setLogin} setUser={setUser} setSections={setSections}/>} /> 
+     <Route path="/signUp" element={<SignUp />} /> 
+     <Route path="/body" element={<Body login={login} sections={sections} setSections={setSections}/>} /> 
     
     </Routes>
     </BrowserRouter>

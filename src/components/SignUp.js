@@ -4,13 +4,15 @@ import styles from './SignUp.module.css'
 import InputControl from "./InputControl";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import {auth} from '../firebase'
+import { useSelector } from "react-redux";
 
 const SignUp = (props) =>{
-        const [isDarkMode, setIsDarkMode] = useState( false);
+        //const [isDarkMode, setIsDarkMode] = useState( false);
+        const {isDarkMode} = useSelector(state => state.custom); //using redux
         const [errorMes, setErrorMes] = useState("");
-        useEffect(() =>{
-            setIsDarkMode(props.isDarkMode);
-         },[props.isDarkMode])
+        // useEffect(() =>{
+        //     setIsDarkMode(props.isDarkMode);
+        //  },[props.isDarkMode])
         const [values, setValues] = useState({
             email : "",
             pass : ""
