@@ -171,4 +171,10 @@
     .container{
       aspect-ratio: 1/1.1;
     }
+    .section .sectionTitle {
+      font-size: 1rem;
+    }
+    .header .heading {
+      font-size: 2rem;
+    }
   }
