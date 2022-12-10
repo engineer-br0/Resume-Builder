@@ -695,7 +695,7 @@ const Editor = (props) =>{
                   const tempDetail = {
                     points: values.points,
                   };
-                  const tempDetails = [...sections.others.details];
+                  const tempDetails = [...sections.others.details];  //...sections.others.details
                   tempDetails[activeIndex] = tempDetail;
           
                   props.setSections((prev) => ({
@@ -706,7 +706,7 @@ const Editor = (props) =>{
                       sectionTitle,
                     },
                   }));
-                  //console.log(sections.achievement);
+                  console.log(sections.others);
                   break;
                   }
     }
