@@ -177,4 +177,39 @@
     .header .heading {
       font-size: 2rem;
     }
+    .header .subHeading {
+      font-size: 1rem;
+    }
+    .locationInfo{
+      font-size: 10px;
+    }
+    .header .link {
+      font-size: 0.675rem;
+    }
+
+    .section .sectionTitle {
+      font-size: 1rem;
+    }
+    .section .content .item:last-child {
+      border-bottom: none;
+    }
+    .content .title {
+      font-size: 0.8rem;
+    }
+    
+    .content .subTitle {
+      font-size: 0.8rem;
+    }
+    
+    .link {
+      font-size: 0.75rem;
+    }
+    
+    .content .date {
+      font-size: 0.675rem;
+    }
+    .points,
+  .numbered {
+    font-size: 0.675rem;
+  }
   }

@@ -189,7 +189,6 @@ const Resume = React.forwardRef((props,ref) =>{
         </div>
      ),
 
-
      others : (
       <div 
         key={"others"} 
